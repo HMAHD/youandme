@@ -1,12 +1,3 @@
-<!--
- * @Version：You & Me 2.0
- * @Author: Akash
- * @Date: 2024-11-09 07:00:00
- * @LastEditTime: 2024-11-08
- * @Description: Of course, bad code can be cleaned up. But it’s very expensive.
- * @Copyright (c) 2024 by Akash All Rights Reserved.
--->
- 
 <?php
 
 include_once 'admin/connect.php';
