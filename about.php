@@ -66,7 +66,7 @@ $about = mysqli_fetch_array($resab);
                 if (res.value == "gg") {
                     return botui.message.bot({
                         delay: 1500,
-                        content: " ![告辞](https://img.gejiba.com/images/4f6983d663bea83530b8ac3a8a6b9220.jpg) "
+                        content: " ![Farewell](https://img.gejiba.com/images/4f6983d663bea83530b8ac3a8a6b9220.jpg) "
                     })
                 }
             });

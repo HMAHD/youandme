@@ -232,7 +232,7 @@ a:hover {
   height: 5rem;
   margin-top: 5rem;
   margin-bottom: -7px;
-  /* 修复 Safari 等浏览器下方空隙 */
+  /* Fix bottom gap in Safari and other browsers */
 }
 
 .bg-img .parallax>use {

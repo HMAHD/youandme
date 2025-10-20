@@ -68,7 +68,7 @@
                         <div class="card-header pt-4 pb-4 text-center bg-primary">
                             <a href="##">
                                 <span
-                                    style="color: #fff;font-size: 1.3rem;font-family: '宋体';font-weight: 700;">Database connection failure</span>
+                                    style="color: #fff;font-size: 1.3rem;font-family: 'Open Sans', sans-serif;font-weight: 700;">Database connection failure</span>
                             </a>
                         </div>
 
