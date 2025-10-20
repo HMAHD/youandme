@@ -13,21 +13,21 @@
 
     var factory = function (exports) {
 
-		var pluginName   = "mp4-dialog";
+        var pluginName   = "mp4-dialog";
 
-		exports.fn.mp4Dialog = function() {
+        exports.fn.mp4Dialog = function() {
 
-			var _this       = this;
-			var cm          = this.cm;
+            var _this       = this;
+            var cm          = this.cm;
             var editor      = this.editor;
             var settings    = this.settings;
             var selection   = cm.getSelection();
             var lang        = this.lang;
             var linkLang    = lang.dialog.mp4;
             var classPrefix = this.classPrefix;
-			var dialogName  = classPrefix + pluginName, dialog;
+            var dialogName  = classPrefix + pluginName, dialog;
 
-			cm.focus();
+            cm.focus();
 
             if (editor.find("." + dialogName).length > 0)
             {
@@ -43,7 +43,7 @@
             {
                 var dialogHTML = "<div class=\"" + classPrefix + "form\">" + 
                                         "<label>" + linkLang.url + "</label>" + 
-                                        "<input type=\"text\" placeholder=\"请输入视频链接\" value=\"\" data-url />" +
+                                        "<input type=\"text\" placeholder=\"Please enter the video URL\" value=\"\" data-url />" +
                                         // "<br/>" + 
                                         // "<label>" + linkLang.urlTitle + "</label>" + 
                                         "<input type=\"hidden\" value=\"" + selection + "\" data-title />" + 
@@ -100,34 +100,34 @@
                         }]
                     }
                 });
-			}
-		};
+            }
+        };
 
-	};
+    };
     
-	// CommonJS/Node.js
-	if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
+    // CommonJS/Node.js
+    if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
     { 
         module.exports = factory;
     }
-	else if (typeof define === "function")  // AMD/CMD/Sea.js
+    else if (typeof define === "function")  // AMD/CMD/Sea.js
     {
-		if (define.amd) { // for Require.js
+        if (define.amd) { // for Require.js
 
-			define(["editormd"], function(editormd) {
+            define(["editormd"], function(editormd) {
                 factory(editormd);
             });
 
-		} else { // for Sea.js
-			define(function(require) {
+        } else { // for Sea.js
+            define(function(require) {
                 var editormd = require("./../../editormd");
                 factory(editormd);
             });
-		}
-	} 
-	else
-	{
+        }
+    } 
+    else
+    {
         factory(window.editormd);
-	}
+    }
 
 })();
