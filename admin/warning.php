@@ -129,7 +129,7 @@ $stmt->fetch();
     <!-- end page -->
 
     <footer class="footer footer-alt">
-        Copyright © 2024 Akash Hasendra. && <a href="https://akash.us.kg" target="_blank">You & Me</a> All
+        Copyright © 2024-<?php echo date("Y") ?> Akash Hasendra. && <a href="https://akash.us.kg" target="_blank">You & Me</a> All
         Rights Reserved.
     </footer>
 
