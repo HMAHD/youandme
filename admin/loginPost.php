@@ -14,7 +14,7 @@ if (!empty($recaptcha_site_key) && !empty($recaptcha_secret_key)) {
     $postData = http_build_query([
         'secret' => $recaptcha_secret_key,
         'response' => $captchaToken,
-        'remoteip' => $_SERVER['REMOTE_ADDR'] ?? ''
+        'remoteip' => (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '')
     ]);
     $options = [
         'http' => [
