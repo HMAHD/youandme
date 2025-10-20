@@ -7,7 +7,6 @@
  * @Copyright (c) 2024 by Akash All Rights Reserved.
 -->
 
-<?php include_once "Config_DB.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,7 +77,7 @@
                                 <p class="text-muted mb-4">Meeting you is the beginning of all stories 🎉</p>
                             </div>
 
-                            <form action="loginPost.php" method="post" onsubmit="return check()" id="login-form">
+                            <form action="loginPost.php" method="post" onsubmit="return check()">
 
                                 <div class="form-group">
                                     <label for="emailaddress">User</label>
@@ -100,13 +99,7 @@
                                 </div>
 
                                 <div class="form-group mb-0 text-center">
-                                    <button class="btn btn-primary<?php echo !empty($recaptcha_site_key) ? ' g-recaptcha' : ''; ?>" type="submit"
-                                        <?php if (!empty($recaptcha_site_key)) { ?>
-                                            data-sitekey="<?php echo htmlspecialchars($recaptcha_site_key, ENT_QUOTES); ?>"
-                                            data-callback="onSubmit"
-                                            data-size="invisible"
-                                        <?php } ?>
-                                    > Log in as Admin</button>
+                                    <button class="btn btn-primary" type="submit"> Log in as Admin</button>
                                 </div>
 
                             </form>
@@ -125,10 +118,6 @@
     </div>
     <!-- end page -->
     <script>
-        var recaptchaEnabled = <?php echo !empty($recaptcha_site_key) ? 'true' : 'false'; ?>;
-        function onSubmit(token) {
-            document.getElementById('login-form').submit();
-        }
         function check() {
             //Get the 0th index in the name array and remove spaces.
             let adminName = document.getElementsByName('adminName')[0].value.trim();
@@ -155,15 +144,9 @@
                 alert("Password contains special characters Please re-enter")
                 return false;
             }
-            if (recaptchaEnabled) {
-                try {
-                    grecaptcha.execute();
-                    return false;
-                } catch (e) {
-                    return true;
-                }
-            }
-            return true;
+
+
+
         }
     </script>
 
@@ -173,9 +156,6 @@
     </footer>
 
     <!-- App js -->
-    <?php if (!empty($recaptcha_site_key)) { ?>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <?php } ?>
     <script src="/admin/assets/js/app.min.js"></script>
 </body>
 
