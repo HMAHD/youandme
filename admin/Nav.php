@@ -256,7 +256,7 @@ if (mysqli_num_rows($result)) {
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="/admin/Like_Girl.php" class="side-nav-link">
+                        <a href="/admin/You_And_Me.php" class="side-nav-link">
                             <i class="dripicons-information"></i>
                             <span> About You & Me</span>
                             <span class="menu-arrow"></span>

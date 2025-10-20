@@ -15,7 +15,7 @@ Dev - Akash
 
 ---
 
-- ​​Demo address: [You & Me 2.0 (Demo)](https://akash.us.kg)
+- ​​Demo address: [You & Me 2.0 (Demo)](https://akash.lk)
 - Project document address (document is not the latest version): [Author Blog](https://diary.us.kg)
 
 ### Project Statement

@@ -17,6 +17,14 @@ $sql = "select * from text";
 $result = mysqli_query($connect, $sql);
 $text = mysqli_fetch_array($result);
 
+if (is_array($text)) {
+    foreach ($text as $k => $v) {
+        if (is_string($v)) {
+            $text[$k] = str_replace('Like_Girl', 'You & Me', $v);
+        }
+    }
+}
+
 $sql = "select * from diySet";
 $result = mysqli_query($connect, $sql);
 if (mysqli_num_rows($result)) {
@@ -24,6 +32,13 @@ if (mysqli_num_rows($result)) {
 }
 
 $copy = $text['Copyright'];
+$currentYear = date('Y');
+if (is_string($copy)) {
+    $copy = str_replace('Like_Girl', 'You & Me', $copy);
+    $copy = preg_replace_callback('/(\\d{4})\\s*-\\s*\\d{4}/', function ($m) use ($currentYear) {
+        return $m[1] . ' - ' . $currentYear;
+    }, $copy);
+}
 $icp = $text['icp'];
 $Animation = $text['Animation'];
 ?>
@@ -117,7 +132,7 @@ $Animation = $text['Animation'];
 <link rel="shortcut icon" href="/favicon.ico" />
 <meta name="keywords"
     content="<?php echo $text['title'] ?>,You & Me 2.0,NewUi,Welcome to 'You and Me One'—a heartwarming space where love and memories come alive.">
-<meta name="discription" content="<?php echo $text['writing'] ?> - Like Girl 5.2.0">
+<meta name="discription" content="<?php echo $text['writing'] ?> - You & Me 2.0">
 <meta name="author" content="Ki">
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
