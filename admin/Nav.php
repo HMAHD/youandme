@@ -1,13 +1,3 @@
-<!--
- * @Version：You & Me 2.0
- * @Author: Akash
- * @Date: 2024-11-25 10:00:00
- * @LastEditTime: 2024-11-28
- * @Description: Of course, bad code can be cleaned up. But it’s very expensive.
- * @Copyright (c) 2024 by Akash All Rights Reserved.
--->
-
-
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . '/ipjc.php');
 error_reporting(0);

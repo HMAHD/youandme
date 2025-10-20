@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['loginadmin']) || $_SESSION['loginadmin'] == '') {
+    header("Location: login.php");
+    exit();
+}
+
 include_once 'Nav.php';
 $liuyan = "select * from leaving order by id desc limit 0,6";
 $resliuyan = mysqli_query($connect, $liuyan);
