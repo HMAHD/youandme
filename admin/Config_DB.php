@@ -27,5 +27,11 @@ $db_name = "LikeGirlv520";
 //To secure your site, please set up a complex and unique security code to be filled in when modifying sensitive information.
 $Like_Code = "You&Me";
 
+// Google reCAPTCHA configuration (optional)
+// To enable invisible reCAPTCHA on the admin login, set your keys below.
+// Leave both as empty strings to disable captcha.
+$recaptcha_site_key = "";
+$recaptcha_secret_key = "";
+
 //version number
 $version = 20241108;
