@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- 主机： localhost
--- 生成日期： 2024-11-07 21:14:31
--- 服务器版本： 5.7.44-log
--- PHP 版本： 8.0.26
+-- Host: localhost
+-- Generation date: 2024-11-07 21:14:31
+-- Server version: 5.7.44-log
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库： `LikeGirl v5.2.0`
+-- Database: `LikeGirl v5.2.0`
 --
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `about`
+-- Table structure for table `about`
 --
 
 CREATE TABLE `about` (
@@ -56,7 +56,7 @@ CREATE TABLE `about` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `about`
+-- Dumping data for table `about`
 --
 
 INSERT INTO `about` 
@@ -93,7 +93,7 @@ VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `article`
+-- Table structure for table `article`
 --
 
 CREATE TABLE `article` (
@@ -105,7 +105,7 @@ CREATE TABLE `article` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 转存表中的数据 `article`
+-- Dumping data for table `article`
 --
 
 INSERT INTO `article` 
@@ -113,7 +113,7 @@ INSERT INTO `article`
 VALUES
 (
     1, 
-    '<quote>Quoted Content Style</quote>\n\n<hr>\n\n\n<h1>H1 Font Size Demonstration</h1>\n\n<hr>\n\n\n<h2>H2 Font Size Demonstration</h2>\n\n<hr>\n\n\n<h3>H3 Font Size Demonstration</h3>\n\n<hr>\n\n\n<h4>H4 Font Size Demonstration</h4>\n\n<hr>\n\n\n<h5>H5 Font Size Demonstration</h5>\n\n<hr>\n\n\n<h6>H6 Font Size Demonstration</h6>\n\n<hr>\n\n\n<b>Bold Text</b>\n<s>Strikethrough Text</s>\n<i>Italic Text</i>\n<code>Highlighted Content</code>\n\n<center>Centered Text</center>\n\n\n<!-- Divider Line -->\n<hr>\n<quote>Insert Image</quote>\n<img alt=\"\" src=\"https://lovey.kikiw.cn/Style/img/Cover.webp\">\n<!-- Divider Line -->\n<hr>\n<quote>Insert Video</quote>\n\n<video src=\"https://classpic.kikiw.cn/video/fengjing.mp4\" controls></video>\n<!-- Divider Line -->\n<hr>', 
+    '<quote>Quoted Content Style</quote>\n\n<hr>\n\n\n<h1>H1 Font Size Demonstration</h1>\n\n<hr>\n\n\n<h2>H2 Font Size Demonstration</h2>\n\n<hr>\n\n\n<h3>H3 Font Size Demonstration</h3>\n\n<hr>\n\n\n<h4>H4 Font Size Demonstration</h4>\n\n<hr>\n\n\n<h5>H5 Font Size Demonstration</h5>\n\n<hr>\n\n\n<h6>H6 Font Size Demonstration</h6>\n\n<hr>\n\n\n<b>Bold Text</b>\n<s>Strikethrough Text</s>\n<i>Italic Text</i>\n<code>Highlighted Content</code>\n\n<center>Centered Text</center>\n\n\n<!-- Divider Line -->\n<hr>\n<quote>Insert Image</quote>\n<img alt="" src="https://lovey.kikiw.cn/Style/img/Cover.webp">\n<!-- Divider Line -->\n<hr>\n<quote>Insert Video</quote>\n\n<video src="https://classpic.kikiw.cn/video/fengjing.mp4" controls></video>\n<!-- Divider Line -->\n<hr>', 
     '2024-11-08', 
     'You & Me v2.0 Article Syntax', 
     'Akash'
@@ -122,7 +122,7 @@ VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `diySet`
+-- Table structure for table `diySet`
 --
 
 CREATE TABLE `diySet` (
@@ -135,7 +135,7 @@ CREATE TABLE `diySet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `diySet`
+-- Dumping data for table `diySet`
 --
 
 INSERT INTO `diySet` 
@@ -153,7 +153,7 @@ VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `IPerror`
+-- Table structure for table `IPerror`
 --
 
 CREATE TABLE `IPerror` (
@@ -167,7 +167,7 @@ CREATE TABLE `IPerror` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `leaving`
+-- Table structure for table `leaving`
 --
 
 CREATE TABLE `leaving` (
@@ -181,7 +181,7 @@ CREATE TABLE `leaving` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 转存表中的数据 `leaving`
+-- Dumping data for table `leaving`
 --
 
 INSERT INTO `leaving` (`id`, `name`, `QQ`, `text`, `time`, `ip`, `city`) VALUES
@@ -190,7 +190,7 @@ INSERT INTO `leaving` (`id`, `name`, `QQ`, `text`, `time`, `ip`, `city`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `leavSet`
+-- Table structure for table `leavSet`
 --
 
 CREATE TABLE `leavSet` (
@@ -201,7 +201,7 @@ CREATE TABLE `leavSet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `leavSet`
+-- Dumping data for table `leavSet`
 --
 
 INSERT INTO `leavSet` (`id`, `jiequ`, `lanjie`, `lanjiezf`) VALUES
@@ -210,7 +210,7 @@ INSERT INTO `leavSet` (`id`, `jiequ`, `lanjie`, `lanjiezf`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `login`
+-- Table structure for table `login`
 --
 
 CREATE TABLE `login` (
@@ -220,7 +220,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `login`
+-- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`id`, `user`, `pw`) VALUES
@@ -229,7 +229,7 @@ INSERT INTO `login` (`id`, `user`, `pw`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `loveImg`
+-- Table structure for table `loveImg`
 --
 
 CREATE TABLE `loveImg` (
@@ -240,7 +240,7 @@ CREATE TABLE `loveImg` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转存表中的数据 `loveImg`
+-- Dumping data for table `loveImg`
 --
 
 INSERT INTO `loveImg` (`id`, `imgDatd`, `imgText`, `imgUrl`) VALUES
@@ -257,7 +257,7 @@ INSERT INTO `loveImg` (`id`, `imgDatd`, `imgText`, `imgUrl`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `lovelist`
+-- Table structure for table `lovelist`
 --
 
 CREATE TABLE `lovelist` (
@@ -268,7 +268,7 @@ CREATE TABLE `lovelist` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 转存表中的数据 `lovelist`
+-- Dumping data for table `lovelist`
 --
 
 INSERT INTO `lovelist` (`id`, `icon`, `eventname`, `imgurl`) VALUES
@@ -375,7 +375,7 @@ INSERT INTO `lovelist` (`id`, `icon`, `eventname`, `imgurl`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `text`
+-- Table structure for table `text`
 --
 
 CREATE TABLE `text` (
@@ -411,7 +411,7 @@ INSERT INTO `text` (`id`, `boy`, `girl`, `title`, `logo`, `writing`, `boyimg`, `
 -- --------------------------------------------------------
 
 --
--- 表的结构 `warning`
+-- Table structure for table `warning`
 --
 
 CREATE TABLE `warning` (
@@ -423,141 +423,141 @@ CREATE TABLE `warning` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 转储表的索引
+-- Indexes for dumped tables
 --
 
 --
--- 表的索引 `about`
+-- Indexes for table `about`
 --
 ALTER TABLE `about`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `article`
+-- Indexes for table `article`
 --
 ALTER TABLE `article`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `diySet`
+-- Indexes for table `diySet`
 --
 ALTER TABLE `diySet`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `IPerror`
+-- Indexes for table `IPerror`
 --
 ALTER TABLE `IPerror`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `leaving`
+-- Indexes for table `leaving`
 --
 ALTER TABLE `leaving`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `leavSet`
+-- Indexes for table `leavSet`
 --
 ALTER TABLE `leavSet`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `login`
+-- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `loveImg`
+-- Indexes for table `loveImg`
 --
 ALTER TABLE `loveImg`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `lovelist`
+-- Indexes for table `lovelist`
 --
 ALTER TABLE `lovelist`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `text`
+-- Indexes for table `text`
 --
 ALTER TABLE `text`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `warning`
+-- Indexes for table `warning`
 --
 ALTER TABLE `warning`
   ADD PRIMARY KEY (`id`);
 
 --
--- 在导出的表使用AUTO_INCREMENT
+-- AUTO_INCREMENT for exported tables
 --
 
 --
--- 使用表AUTO_INCREMENT `about`
+-- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- 使用表AUTO_INCREMENT `article`
+-- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- 使用表AUTO_INCREMENT `diySet`
+-- AUTO_INCREMENT for table `diySet`
 --
 ALTER TABLE `diySet`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- 使用表AUTO_INCREMENT `IPerror`
+-- AUTO_INCREMENT for table `IPerror`
 --
 ALTER TABLE `IPerror`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用表AUTO_INCREMENT `leaving`
+-- AUTO_INCREMENT for table `leaving`
 --
 ALTER TABLE `leaving`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- 使用表AUTO_INCREMENT `leavSet`
+-- AUTO_INCREMENT for table `leavSet`
 --
 ALTER TABLE `leavSet`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- 使用表AUTO_INCREMENT `login`
+-- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- 使用表AUTO_INCREMENT `loveImg`
+-- AUTO_INCREMENT for table `loveImg`
 --
 ALTER TABLE `loveImg`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- 使用表AUTO_INCREMENT `lovelist`
+-- AUTO_INCREMENT for table `lovelist`
 --
 ALTER TABLE `lovelist`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
--- 使用表AUTO_INCREMENT `text`
+-- AUTO_INCREMENT for table `text`
 --
 ALTER TABLE `text`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- 使用表AUTO_INCREMENT `warning`
+-- AUTO_INCREMENT for table `warning`
 --
 ALTER TABLE `warning`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
