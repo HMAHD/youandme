@@ -41,25 +41,20 @@
 
 <?php
 
-$file = $_GET['route'];
-
 include_once 'Database.php';
 include_once 'Function.php';
 
-if ($file) {
-    $ipcharu = "insert into warning (ip,gsd,time,file) values (?,?,?,?)";
-    $stmt = $conn->prepare($ipcharu);
-    $stmt->bind_param("ssss", $ip, $gsd, $time, $file);
-    $ip = $_SERVER["REMOTE_ADDR"];
-    $gsd = get_ip_city_New($ip);
-    $time = gmdate("Y-m-d H:i:s", time() + 8 * 3600);
-    $file = $_GET['route'];
-    $result = $stmt->execute();
-    if (!$result) echo "Error message:" . $stmt->error;
-    $stmt->fetch();
-} else {
-    die("<script>alert('Parameter error. Please be careful what you're doing.');</script");
-}
+$file = isset($_GET['route']) ? $_GET['route'] : 'unknown';
+$ip = $_SERVER["REMOTE_ADDR"];
+$gsd = get_ip_city_New($ip);
+$time = gmdate("Y-m-d H:i:s", time() + 8 * 3600);
+
+$ipcharu = "insert into warning (ip,gsd,time,file) values (?,?,?,?)";
+$stmt = $conn->prepare($ipcharu);
+$stmt->bind_param("ssss", $ip, $gsd, $time, $file);
+$result = $stmt->execute();
+if (!$result) echo "Error message:" . $stmt->error;
+$stmt->fetch();
 
 ?>
 

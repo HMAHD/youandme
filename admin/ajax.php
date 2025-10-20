@@ -10,7 +10,7 @@
 <?php
 session_start();
 $file = $_SERVER['PHP_SELF'];
-if (!isset($_SESSION['loginadmin']) && $_SESSION['loginadmin'] == '') {
+if (!isset($_SESSION['loginadmin']) || $_SESSION['loginadmin'] == '') {
     die("<script>alert('Illegal operation. Behavior recorded.');location.href = 'warning.php?route=$file';</script>");
 }
 ?>
