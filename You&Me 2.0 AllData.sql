@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `LikeGirl v5.2.0`
+-- Database: `YouAndMeV20`
 --
 
 -- --------------------------------------------------------
@@ -172,12 +172,12 @@ CREATE TABLE `IPerror` (
 
 CREATE TABLE `leaving` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'user ID',
-  `QQ` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Mobile number',
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'User name',
+  `QQ` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'QQ number (deprecated - used for profile pictures)',
   `text` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Message',
-  `time` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `ip` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ip log',
-  `city` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Province/city'
+  `time` varchar(200) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Message timestamp',
+  `ip` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Visitor IP address',
+  `city` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Visitor location'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -185,7 +185,7 @@ CREATE TABLE `leaving` (
 --
 
 INSERT INTO `leaving` (`id`, `name`, `QQ`, `text`, `time`, `ip`, `city`) VALUES
-(1, 'Akash', '+94767378901', 'You&Me v2.0', '1730984690', '112.97.203.248', 'Kurunegala');
+(1, 'Akash', '3439780232', 'You&Me v2.0', '1730984690', '112.97.203.248', 'Kurunegala');
 
 -- --------------------------------------------------------
 
@@ -215,8 +215,8 @@ INSERT INTO `leavSet` (`id`, `jiequ`, `lanjie`, `lanjiezf`) VALUES
 
 CREATE TABLE `login` (
   `id` int(11) NOT NULL,
-  `user` varchar(100) NOT NULL COMMENT 'Login Username',
-  `pw` char(32) NOT NULL COMMENT 'login password'
+  `user` varchar(100) NOT NULL COMMENT 'Administrator Username',
+  `pw` char(32) NOT NULL COMMENT 'Administrator Password'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -234,9 +234,9 @@ INSERT INTO `login` (`id`, `user`, `pw`) VALUES
 
 CREATE TABLE `loveImg` (
   `id` int(11) NOT NULL,
-  `imgDatd` varchar(100) NOT NULL COMMENT 'date',
-  `imgText` varchar(200) NOT NULL COMMENT 'description',
-  `imgUrl` varchar(200) NOT NULL COMMENT 'external link'
+  `imgDatd` varchar(100) NOT NULL COMMENT 'Image Date',
+  `imgText` varchar(200) NOT NULL COMMENT 'Image Description',
+  `imgUrl` varchar(200) NOT NULL COMMENT 'Image URL'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -251,7 +251,7 @@ INSERT INTO `loveImg` (`id`, `imgDatd`, `imgText`, `imgUrl`) VALUES
 (5, '2024-11-08', 'Gulu, such a clear and foolish look', 'https://i.mij.rip/2024/11/06/e4fb1f801ac5a9ea3972f0fcc2a8dd2f.webp'),
 (6, '2024-11-08', 'Gulu actually looks pretty decent', 'https://i.mij.rip/2024/11/06/8414967b9df32aa18daa1ee4f7aa279b.webp'),
 (7, '2024-11-08', 'I don’t want to ride my new road bike anymore, now I’m in Dongguan, Chang’an area', 'https://i.mij.rip/2024/11/07/db5b6fb76f036086a7c3604eea43ed4f.webp'),
-(8, '2024-11-08', 'LikeGirl v5.2.0 Couple Station', 'https://blog.kikiw.cn/img/likegirlCover.png'),
+(8, '2024-11-08', 'You & Me v2.0 Couple Station', 'https://blog.kikiw.cn/img/likegirlCover.png'),
 (9, '2024-11-08', 'On the way home from work, Xiao Li and I saw the sunset', 'https://i.mij.rip/2024/11/07/0ee5d10be62700895febedbe7e69969e.jpeg');
 
 -- --------------------------------------------------------
@@ -262,9 +262,9 @@ INSERT INTO `loveImg` (`id`, `imgDatd`, `imgText`, `imgUrl`) VALUES
 
 CREATE TABLE `lovelist` (
   `id` int(11) NOT NULL,
-  `icon` int(1) NOT NULL COMMENT 'Completion',
-  `eventname` varchar(200) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Content of the event',
-  `imgurl` varchar(300) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Image address'
+  `icon` int(1) NOT NULL COMMENT 'Task Completion Status',
+  `eventname` varchar(200) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Event Description',
+  `imgurl` varchar(300) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Event Image URL'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -380,33 +380,33 @@ INSERT INTO `lovelist` (`id`, `icon`, `eventname`, `imgurl`) VALUES
 
 CREATE TABLE `text` (
   `id` int(11) NOT NULL,
-  `boy` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Boy name',
-  `girl` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Girl name',
-  `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Website title',
-  `logo` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Website logo',
-  `writing` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Website copywriting',
-  `boyimg` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Boy Mobile',
-  `girlimg` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Girl Mobile',
-  `startTime` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Start time',
-  `icp` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Website ICP number',
-  `Copyright` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Website copyright',
+  `boy` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Male Partner Name',
+  `girl` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Female Partner Name',
+  `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site Title',
+  `logo` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site Logo',
+  `writing` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site Tagline',
+  `boyimg` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Male Partner Phone',
+  `girlimg` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Female Partner Phone',
+  `startTime` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Relationship Start Date',
+  `icp` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ICP Filing Number',
+  `Copyright` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site Copyright Notice',
   `card1` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `card2` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `card3` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `deci1` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `deci2` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `deci3` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `bgimg` varchar(200) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Home page background image URL',
-  `userQQ` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site owner Mobile',
-  `userName` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'User name',
-  `Animation` int(1) NOT NULL COMMENT 'Animation switch'
+  `bgimg` varchar(200) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Homepage Background Image URL',
+  `userQQ` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site Owner Phone',
+  `userName` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site Owner Name',
+  `Animation` int(1) NOT NULL COMMENT 'Animation Toggle Switch'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Data in dump tables `text`
 --
 INSERT INTO `text` (`id`, `boy`, `girl`, `title`, `logo`, `writing`, `boyimg`, `girlimg`, `startTime`, `icp`, `Copyright`, `card1`, `card2`, `card3`, `deci1`, `deci2`, `deci3`, `bgimg`, `userQQ`, `userName`, `Animation`) VALUES
-(1, 'Akash', 'Piyumi', 'You And Me', 'You & Me v2.0', 'Life is beautiful and so are you.', '647159607', '917640289', '2022-06-05T00:07', 'ICP 200037776', 'Copyright © 2024 You&Me All Rights Reserved.', 'Every little moment', 'Message board', 'About Us', 'It’s romantic when someone is willing to listen to you ramble', 'Write down You\'re messages and blessings here', 'The experiences and memories we’ve had together', 'https://i.ibb.co/TWkDm0m/Web-Cover.png', '+94 767378901', 'Akash', 1);
+(1, 'Akash', 'Piyumi', 'You And Me', 'You & Me v2.0', 'Life is beautiful and so are you.', '647159607', '917640289', '2022-06-05T00:07', 'ICP 200037776', 'Copyright © 2024 You&Me All Rights Reserved.', 'Every little moment', 'Message board', 'About Us', 'It’s romantic when someone is willing to listen to you ramble', 'Write down You\'re messages and blessings here', 'The experiences and memories we’ve had together', 'https://i.ibb.co/TWkDm0m/Web-Cover.png', '3439780232', 'Akash', 1);
 
 -- --------------------------------------------------------
 
@@ -548,7 +548,7 @@ ALTER TABLE `loveImg`
 -- AUTO_INCREMENT for table `lovelist`
 --
 ALTER TABLE `lovelist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `text`

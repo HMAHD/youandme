@@ -26,6 +26,8 @@ include_once 'head.php';
 <head>
     <meta charset="utf-8" />
     <title><?php echo $text['title'] ?> — <?php echo $text['card2'] ?></title>
+    <!-- Gravatar script for profile pictures -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
 </head>
 
 <body>
@@ -57,7 +59,8 @@ include_once 'head.php';
                                 </div>
 
                                 <div class="user_info">
-                                    <img src="https://q1.qlogo.cn/g?b=qq&nk=<?php echo $qq ?>&s=100">
+                                    <!-- Generate profile picture using Gravatar based on IP -->
+                                    <img src="" class="gravatar" data-ip="<?php echo $ip; ?>" data-name="<?php echo htmlspecialchars($name); ?>">
                                     <span class="name"><?php echo $name ?></span>
                                 </div>
                                 <div class="text"><?php echo $text ?></div>
@@ -68,11 +71,10 @@ include_once 'head.php';
                     ?>
                     <form action="admin/leavingPost.php" method="post">
                         <div class="inputbox" id="MessageArea">
-                            <img src="https://i.ibb.co/cJDcYS4/whatsapp-svgrepo-com.png" alt="" class="avatar">
-                            <input id="Telegram" type="text" name="telegram" placeholder="Enter your Telegram username" class="rig">
-                            <input id="nickname" type="text" name="name" placeholder="Input your Name" class="let">
+                            <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="" class="avatar">
+                            <input id="nickname" type="text" name="name" placeholder="Enter your name" class="let" required>
                         </div>
-                        <textarea name="text" id="wenben" rows="8" placeholder="Please enter your message..."></textarea>
+                        <textarea name="text" id="wenben" rows="8" placeholder="Please enter your message..." required></textarea>
                         <div class="input-sub">
                             <button type="button" id="leavingPost" class="tijiao">Submit Message
                                 <svg style="width:1.3em;height: 1.3em;" t="1717899795089" class="icon"
@@ -89,57 +91,28 @@ include_once 'head.php';
             </div>
         </div>
         <script>
-            $('#Telegram').blur(function() {
-                let telegramUsername = $("#Telegram").val().trim();
-                if (telegramUsername.length <= 0) {
-                    return false;
-                }
-                $.ajax({
-                    url: "https://api.telegram.org/7929953001:AAGlOJthc2jo5g93AtFcEfYu9kA46yLqgmo/getChat?chat_id=" + telegramUsername,
-                    type: "GET",
-                    timeout: 5000,
-                    dataType: "json",
-                    statusCode: {
-                        500: function(response) {
-                            loadingname();
-                            setTimeout(function() {
-                                removeLoading('test');
-                                toastr["warning"]("Failed to fetch Telegram profile! API request timeout, please contact support.", "You & Me");
-                            }, 2000);
-                        }
-                    },
-                    success: function(result) {
-                        if (result.ok) {
-                            loadingname();
-                            let userInfo = result.result;
-                            $("#nickname").val(userInfo.first_name);
-                            if (userInfo.photo_url) {
-                                $(".avatar").attr("src", userInfo.photo_url);
-                            }
-                            setTimeout(function() {
-                                removeLoading('test');
-                                toastr["success"]("Successfully fetched nickname and profile picture.", "You & Me");
-                            }, 1200);
-                        } else {
-                            removeLoading('test');
-                            toastr["warning"](result.description, "You & Me");
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        removeLoading('test');
-                        toastr["error"]("Request failed: " + error, "You & Me");
-                    }
+            // Generate Gravatar URL based on IP hash
+            function generateGravatar(ip, name) {
+                // Create a hash of the IP address
+                var hash = md5(ip);
+                // Return Gravatar URL with fallback to identicon
+                return 'https://www.gravatar.com/avatar/' + hash + '?d=identicon&s=100';
+            }
+
+            // Set profile pictures for existing messages
+            $(document).ready(function() {
+                $('.gravatar').each(function() {
+                    var ip = $(this).data('ip');
+                    var name = $(this).data('name');
+                    var gravatarUrl = generateGravatar(ip, name);
+                    $(this).attr('src', gravatarUrl);
                 });
             });
 
             $("#leavingPost").click(function() {
-                let telegramUsername = $("input[name='telegram']").val().trim();
                 let name = $("input[name='name']").val().trim();
-                if (telegramUsername.length == 0) {
-                    toastr["warning"]("Please provide your Telegram username!", "You & Me");
-                    return false;
-                } else if (name.length == 0) {
-                    toastr["warning"]("Please provide your nickname!", "You & Me");
+                if (name.length == 0) {
+                    toastr["warning"]("Please provide your name!", "You & Me");
                     return false;
                 }
 
@@ -162,7 +135,7 @@ include_once 'head.php';
                     return false;
                 }
 
-                if (!(telegramUsername && name && text)) {
+                if (!(name && text)) {
                     toastr["warning"]("Form information cannot be empty. Please complete the form first!", "You & Me");
                     return false;
                 }
@@ -172,7 +145,6 @@ include_once 'head.php';
                 $.ajax({
                     url: "admin/leavingPost.php",
                     data: {
-                        telegramUsername: telegramUsername,
                         name: name,
                         text: text,
                     },
@@ -185,14 +157,11 @@ include_once 'head.php';
                         if (res == 1) {
                             toastr["success"]("Message submitted successfully. Please refresh the page to view!", "You & Me");
                             $('#leavingPost').text('Message sent');
+                            // Clear form
+                            $("input[name='name']").val('');
+                            $("textarea[name='text']").val('');
                         } else if (res == 0) {
                             toastr["error"]("Message submission failed!", "You & Me");
-                            $('#leavingPost').text('Message failed');
-                        } else if (res == 3 || res == 30) {
-                            toastr["error"]("Message submission failed — Invalid Telegram username", "You & Me");
-                            $('#leavingPost').text('Message failed');
-                        } else if (res == 4 || res == 40) {
-                            toastr["error"]("Message submission failed — Invalid IP address format", "You & Me");
                             $('#leavingPost').text('Message failed');
                         } else if (res == 5 || res == 50) {
                             toastr["error"]("Message submission failed — Parameter error", "You & Me");
@@ -209,31 +178,11 @@ include_once 'head.php';
                     }
                 })
             });
-
-            function loadingname() {
-                $('body').loading({
-                    loadingWidth: 240,
-                    title: 'Fetching Telegram profile...',
-                    name: 'test',
-                    discription: 'Please wait a moment',
-                    direction: 'column',
-                    type: 'origin',
-                    originDivWidth: 40,
-                    originDivHeight: 40,
-                    originWidth: 6,
-                    originHeight: 6,
-                    smallLoading: false,
-                    loadingMaskBg: 'rgba(0,0,0,0.2)'
-                });
-            }
         </script>
     </div>
 
     <?php
     include_once 'footer.php';
     ?>
-
-
 </body>
-
 </html>

@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `LikeGirl v5.2.0`
+-- Database: `YouAndMe v2.0`
 --
 
 -- --------------------------------------------------------
@@ -30,29 +30,29 @@ SET time_zone = "+00:00";
 CREATE TABLE `about` (
   `id` int(11) NOT NULL,
   `title` varchar(30) NOT NULL COMMENT 'Title',
-  `aboutimg` varchar(100) NOT NULL COMMENT 'Background image',
-  `info1` varchar(50) NOT NULL COMMENT 'Dialogue 1',
-  `info2` varchar(50) NOT NULL COMMENT 'Dialogue 2',
-  `info3` varchar(50) NOT NULL COMMENT 'Dialogue 3',
-  `btn1` varchar(30) NOT NULL COMMENT 'OK button',
-  `btn2` varchar(30) NOT NULL COMMENT 'Cancel button',
-  `infox1` varchar(30) NOT NULL COMMENT 'x2',
-  `infox2` varchar(30) NOT NULL COMMENT 'x2',
-  `infox3` varchar(30) NOT NULL COMMENT 'x2',
-  `infox4` varchar(30) NOT NULL COMMENT 'x2',
-  `infox5` varchar(30) NOT NULL COMMENT 'x2',
-  `infox6` varchar(30) NOT NULL COMMENT 'x2',
-  `btnx2` varchar(30) NOT NULL COMMENT 'btnx2',
-  `infof1` varchar(30) NOT NULL COMMENT 'f3',
-  `infof2` varchar(30) NOT NULL COMMENT 'f3',
-  `infof3` varchar(30) NOT NULL COMMENT 'f3',
-  `infof4` varchar(30) NOT NULL COMMENT 'f3',
-  `btnf3` varchar(30) NOT NULL COMMENT 'btnf3',
-  `infod1` varchar(30) NOT NULL COMMENT 'd4',
-  `infod2` varchar(30) NOT NULL COMMENT 'd4',
-  `infod3` varchar(30) NOT NULL COMMENT 'd4',
-  `infod4` varchar(30) NOT NULL COMMENT 'd4',
-  `infod5` varchar(30) NOT NULL COMMENT 'd4'
+  `aboutimg` varchar(100) NOT NULL COMMENT 'Page Background Image',
+  `info1` varchar(50) NOT NULL COMMENT 'Introduction Text 1',
+  `info2` varchar(50) NOT NULL COMMENT 'Introduction Text 2',
+  `info3` varchar(50) NOT NULL COMMENT 'Introduction Text 3',
+  `btn1` varchar(30) NOT NULL COMMENT 'Accept Button',
+  `btn2` varchar(30) NOT NULL COMMENT 'Decline Button',
+  `infox1` varchar(30) NOT NULL COMMENT 'Additional Info 1',
+  `infox2` varchar(30) NOT NULL COMMENT 'Additional Info 2',
+  `infox3` varchar(30) NOT NULL COMMENT 'Additional Info 3',
+  `infox4` varchar(30) NOT NULL COMMENT 'Additional Info 4',
+  `infox5` varchar(30) NOT NULL COMMENT 'Additional Info 5',
+  `infox6` varchar(30) NOT NULL COMMENT 'Additional Info 6',
+  `btnx2` varchar(30) NOT NULL COMMENT 'Button Label',
+  `infof1` varchar(30) NOT NULL COMMENT 'Feature Info 1',
+  `infof2` varchar(30) NOT NULL COMMENT 'Feature Info 2',
+  `infof3` varchar(30) NOT NULL COMMENT 'Feature Info 3',
+  `infof4` varchar(30) NOT NULL COMMENT 'Feature Info 4',
+  `btnf3` varchar(30) NOT NULL COMMENT 'Feature Button',
+  `infod1` varchar(30) NOT NULL COMMENT 'Description 1',
+  `infod2` varchar(30) NOT NULL COMMENT 'Description 2',
+  `infod3` varchar(30) NOT NULL COMMENT 'Description 3',
+  `infod4` varchar(30) NOT NULL COMMENT 'Description 4',
+  `infod5` varchar(30) NOT NULL COMMENT 'Description'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -87,8 +87,8 @@ CREATE TABLE `diySet` (
   `headCon` text NOT NULL,
   `footerCon` text NOT NULL,
   `cssCon` text NOT NULL,
-  `Pjaxkg` varchar(1) NOT NULL COMMENT 'pjax switch',
-  `Blurkg` varchar(1) NOT NULL COMMENT 'Gaussian blur switch'
+  `Pjaxkg` varchar(1) NOT NULL COMMENT 'Pjax Toggle Switch',
+  `Blurkg` varchar(1) NOT NULL COMMENT 'Gaussian Blur Toggle Switch'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -106,10 +106,10 @@ INSERT INTO `diySet` (`id`, `headCon`, `footerCon`, `cssCon`, `Pjaxkg`, `Blurkg`
 
 CREATE TABLE `IPerror` (
   `id` int(11) NOT NULL,
-  `ipAdd` varchar(100) NOT NULL COMMENT 'ip address',
-  `Time` varchar(200) NOT NULL COMMENT 'time',
-  `State` text NOT NULL COMMENT 'blacklist ip',
-  `text` varchar(100) NOT NULL COMMENT 'comment'
+  `ipAdd` varchar(100) NOT NULL COMMENT 'IP Address',
+  `Time` varchar(200) NOT NULL COMMENT 'Timestamp',
+  `State` text NOT NULL COMMENT 'Blacklisted IP',
+  `text` varchar(100) NOT NULL COMMENT 'Comment/Note'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -120,12 +120,12 @@ CREATE TABLE `IPerror` (
 
 CREATE TABLE `leaving` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'User name',
-  `QQ` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Mobile number',
-  `text` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Message',
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Visitor Name',
+  `QQ` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Phone Number',
+  `text` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'Visitor Message',
   `time` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `ip` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ip log',
-  `city` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Province/city'
+  `ip` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'IP Logging',
+  `city` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Location (Province/City)'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -136,9 +136,9 @@ CREATE TABLE `leaving` (
 
 CREATE TABLE `leavSet` (
   `id` int(11) NOT NULL,
-  `jiequ` varchar(10) NOT NULL COMMENT 'Intercept length',
-  `lanjie` varchar(500) NOT NULL COMMENT 'disallowed symbol',
-  `lanjiezf` varchar(500) NOT NULL COMMENT 'forbidden word'
+  `jiequ` varchar(10) NOT NULL COMMENT 'Text Truncation Length',
+  `lanjie` varchar(500) NOT NULL COMMENT 'Forbidden Characters',
+  `lanjiezf` varchar(500) NOT NULL COMMENT 'Blocked Words'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -156,8 +156,8 @@ INSERT INTO `leavSet` (`id`, `jiequ`, `lanjie`, `lanjiezf`) VALUES
 
 CREATE TABLE `login` (
   `id` int(11) NOT NULL,
-  `user` varchar(100) NOT NULL COMMENT 'Login Username',
-  `pw` char(32) NOT NULL COMMENT 'login password'
+  `user` varchar(100) NOT NULL COMMENT 'Administrator Username',
+  `pw` char(32) NOT NULL COMMENT 'Administrator Password'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -175,9 +175,9 @@ INSERT INTO `login` (`id`, `user`, `pw`) VALUES
 
 CREATE TABLE `loveImg` (
   `id` int(11) NOT NULL,
-  `imgDatd` varchar(100) NOT NULL COMMENT 'date',
-  `imgText` varchar(200) NOT NULL COMMENT 'description',
-  `imgUrl` varchar(200) NOT NULL COMMENT 'external link'
+  `imgDatd` varchar(100) NOT NULL COMMENT 'Image Date',
+  `imgText` varchar(200) NOT NULL COMMENT 'Image Description',
+  `imgUrl` varchar(200) NOT NULL COMMENT 'Image URL'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -188,9 +188,9 @@ CREATE TABLE `loveImg` (
 
 CREATE TABLE `lovelist` (
   `id` int(11) NOT NULL,
-  `icon` int(1) NOT NULL COMMENT 'Completion',
-  `eventname` varchar(200) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Content of the event',
-  `imgurl` varchar(300) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Image address'
+  `icon` int(1) NOT NULL COMMENT 'Task Completion Status',
+  `eventname` varchar(200) CHARACTER SET utf8mb4 NOT NULL COMMENT 'Event Description',
+  `imgurl` varchar(300) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Event Image URL'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -201,16 +201,16 @@ CREATE TABLE `lovelist` (
 
 CREATE TABLE `text` (
   `id` int(11) NOT NULL,
-  `boy` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Boy name',
-  `girl` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Girl name',
-  `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Website title',
-  `logo` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Website logo',
-  `writing` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Website copywriting',
-  `boyimg` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Boy Mobile',
-  `girlimg` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Girl Mobile',
-  `startTime` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Start time',
-  `icp` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Website ICP number',
-  `Copyright` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Website copyright',
+  `boy` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Male Partner Name',
+  `girl` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Female Partner Name',
+  `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site Title',
+  `logo` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site Logo',
+  `writing` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site Tagline',
+  `boyimg` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Male Partner Phone',
+  `girlimg` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Female Partner Phone',
+  `startTime` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Relationship Start Date',
+  `icp` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT 'ICP Filing Number',
+  `Copyright` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Site Copyright Notice',
   `card1` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `card2` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `card3` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -228,7 +228,7 @@ CREATE TABLE `text` (
 --
 
 INSERT INTO `text` (`id`, `boy`, `girl`, `title`, `logo`, `writing`, `boyimg`, `girlimg`, `startTime`, `icp`, `Copyright`, `card1`, `card2`, `card3`, `deci1`, `deci2`, `deci3`, `bgimg`, `userQQ`, `userName`, `Animation`) VALUES
-(1, 'Ki', 'Li', 'Like_Girl v5.2.0', 'Like_Girl v5.2.0', 'Love flowers, love romance, love you~', '647159607', '917640289', '2022-06-05T00:07', 'ICP 2021037776', 'Copyright © 2022 - 2024 Like_Girl All Rights Reserved.', 'Every little moment', 'Message board', 'About Us', 'It’s romantic when someone is willing to listen to you ramble', 'Write down our messages and blessings here', 'The experiences and memories we’ve had together', 'https://lovey.kikiw.cn/Style/img/Cover.webp', '3439780232', 'Ki', 1);
+(1, 'Ki', 'Li', 'You & Me v2.0', 'You & Me v2.0', 'Love flowers, love romance, love you~', '647159607', '917640289', '2022-06-05T00:07', 'ICP 2021037776', 'Copyright © 2022 - 2024 You & Me All Rights Reserved.', 'Every little moment', 'Message board', 'About Us', 'It’s romantic when someone is willing to listen to you ramble', 'Write down our messages and blessings here', 'The experiences and memories we’ve had together', 'https://lovey.kikiw.cn/Style/img/Cover.webp', '3439780232', 'Ki', 1);
 
 -- --------------------------------------------------------
 

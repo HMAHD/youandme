@@ -75,6 +75,21 @@ Dev - Akash
 ### Leave a message for feedback
 
 - I wish to get the heart of one person and stay together until old age
-- Cherish the one in front of you Welcome to use Like_Girl v2.0 (final version)
+- Cherish the one in front of you Welcome to use You & Me v2.0 (final version)
 - If you encounter bugs or suggestions during use, please report to the mailbox. If you have not responded for more than `2 hours`, you can add telegram friends for consultation and feedback
 - me@akash.us.kg
+
+### CI/CD Deployment
+
+This project now includes GitHub Actions workflows for automatic deployment to cPanel hosting:
+
+1. **FTP Deployment**: Uses FTP to deploy files to cPanel
+
+   - Workflow file: `.github/workflows/deploy.yml`
+   - Requires FTP credentials in GitHub Secrets
+
+2. **Git Deployment**: Uses cPanel's Git Version Control feature
+   - Workflow file: `.github/workflows/cpanel-git-deploy.yml`
+   - Requires cPanel API token and session information
+
+See `CI_CD_SETUP.md` and `CPANEL_GIT_DEPLOYMENT.md` for detailed setup instructions.
