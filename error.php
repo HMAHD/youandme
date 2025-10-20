@@ -106,7 +106,7 @@ $stmt->fetch();
                                 <p class="text-muted">Good words make good karma. Bad words hurt.</p>
                                 <p class="text-muted mb-4">
                                     <span class="badge badge-success-lighten">Blocking time:
-                                        <?php if ($Time) { ?><?php echo $Time; ?><?php } else { ?>无 <?php } ?>
+                                        <?php if ($Time) { ?><?php echo $Time; ?><?php } else { ?>None <?php } ?>
                                     </span>
                                     <span class="badge badge-danger-lighten">Reason for blocking:
                                         <?php if ($text) { ?><?php echo $text; ?><?php } else { ?>Your IP is not blocked <?php } ?>

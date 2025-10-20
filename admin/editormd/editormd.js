@@ -13,26 +13,26 @@
 ;(function(factory) {
     "use strict";
     
-	// CommonJS/Node.js
-	if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
+    // CommonJS/Node.js
+    if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
     { 
         module.exports = factory;
     }
-	else if (typeof define === "function")  // AMD/CMD/Sea.js
-	{
+    else if (typeof define === "function")  // AMD/CMD/Sea.js
+    {
         if (define.amd) // for Require.js
         {
             /* Require.js define replace */
         } 
         else 
         {
-		    define(["jquery"], factory);  // for Sea.js
+            define(["jquery"], factory);  // for Sea.js
         }
-	} 
-	else
-	{ 
+    } 
+    else
+    { 
         window.editormd = factory();
-	}
+    }
     
 }(function() {    
 
@@ -42,16 +42,16 @@
     
     var $ = (typeof (jQuery) !== "undefined") ? jQuery : Zepto;
 
-	if (typeof ($) === "undefined") {
-		return ;
-	}
+    if (typeof ($) === "undefined") {
+        return ;
+    }
     
     /**
      * editormd
      * 
-     * @param   {String} id           编辑器的ID
-     * @param   {Object} options      配置选项 Key/Value
-     * @returns {Object} editormd     返回editormd对象
+     * @param   {String} id           Editor ID
+     * @param   {Object} options      Configuration options (Key/Value)
+     * @returns {Object} editormd     Returns the editormd object
      */
     
     var editormd         = function (id, options) {
@@ -104,24 +104,24 @@
         delay                : 300,            // Delay parse markdown to html, Uint : ms
         autoLoadModules      : true,           // Automatic load dependent module files
         watch                : true,
-        placeholder          : "请开始编辑您的文章内容...",
+        placeholder          : "Please start editing your article content...",
         gotoLine             : true,
         codeFold             : false,
         autoHeight           : false,
-		autoFocus            : true,
+        autoFocus            : true,
         autoCloseTags        : true,
         searchReplace        : true,
         syncScrolling        : true,           // true | false | "single", default true
         readOnly             : false,
         tabSize              : 4,
-		indentUnit           : 4,
+        indentUnit           : 4,
         lineNumbers          : true,
-		lineWrapping         : true,
-		autoCloseBrackets    : true,
-		showTrailingSpace    : true,
-		matchBrackets        : true,
-		indentWithTabs       : true,
-		styleSelectedText    : true,
+        lineWrapping         : true,
+        autoCloseBrackets    : true,
+        showTrailingSpace    : true,
+        matchBrackets        : true,
+        indentWithTabs       : true,
+        styleSelectedText    : true,
         matchWordHighlight   : true,           // options: true, false, "onselected"
         styleActiveLine      : true,           // Highlight the current line
         dialogLockScreen     : true,
@@ -1317,7 +1317,7 @@
         
         createInfoDialog : function() {
             var _this        = this;
-			var editor       = this.editor;
+            var editor       = this.editor;
             var classPrefix  = this.classPrefix;  
             
             var infoDialogHTML = [
@@ -1357,16 +1357,16 @@
         infoDialogPosition : function() {
             var infoDialog = this.infoDialog;
             
-			var _infoDialogPosition = function() {
-				infoDialog.css({
-					top  : ($(window).height() - infoDialog.height()) / 2 + "px",
-					left : ($(window).width()  - infoDialog.width()) / 2  + "px"
-				});
-			};
+            var _infoDialogPosition = function() {
+                infoDialog.css({
+                    top  : ($(window).height() - infoDialog.height()) / 2 + "px",
+                    left : ($(window).width()  - infoDialog.width()) / 2  + "px"
+                });
+            };
 
-			_infoDialogPosition();
+            _infoDialogPosition();
 
-			$(window).resize(_infoDialogPosition);
+            $(window).resize(_infoDialogPosition);
             
             return this;
         },
@@ -1383,9 +1383,9 @@
             $("html,body").css("overflow-x", "hidden");
             
             var _this       = this;
-			var editor      = this.editor;
+            var editor      = this.editor;
             var settings    = this.settings;         
-			var infoDialog  = this.infoDialog = editor.children("." + this.classPrefix + "dialog-info");
+            var infoDialog  = this.infoDialog = editor.children("." + this.classPrefix + "dialog-info");
             
             if (infoDialog.length < 1)
             {
@@ -1395,13 +1395,13 @@
             this.lockScreen(true);
             
             this.mask.css({
-						opacity         : settings.dialogMaskOpacity,
-						backgroundColor : settings.dialogMaskBgColor
-					}).show();
+                        opacity         : settings.dialogMaskOpacity,
+                        backgroundColor : settings.dialogMaskBgColor
+                    }).show();
 
-			infoDialog.css("z-index", editormd.dialogZindex).show();
+            infoDialog.css("z-index", editormd.dialogZindex).show();
 
-			this.infoDialogPosition();
+            this.infoDialogPosition();
 
             return this;
         },
@@ -1747,23 +1747,23 @@
                 preview.unbind(mouseOrTouch("scroll", "touchmove"));
             }; 
 
-			codeMirror.bind({
-				mouseover  : cmBindScroll,
-				mouseout   : cmUnbindScroll,
-				touchstart : cmBindScroll,
-				touchend   : cmUnbindScroll
-			});
+            codeMirror.bind({
+                mouseover  : cmBindScroll,
+                mouseout   : cmUnbindScroll,
+                touchstart : cmBindScroll,
+                touchend   : cmUnbindScroll
+            });
             
             if (settings.syncScrolling === "single") {
                 return this;
             }
             
-			preview.bind({
-				mouseover  : previewBindScroll,
-				mouseout   : previewUnbindScroll,
-				touchstart : previewBindScroll,
-				touchend   : previewUnbindScroll
-			});
+            preview.bind({
+                mouseover  : previewBindScroll,
+                mouseout   : previewUnbindScroll,
+                touchstart : previewBindScroll,
+                touchend   : previewUnbindScroll
+            });
 
             return this;
         },
@@ -4057,7 +4057,7 @@
             smartypants : true
         };
         
-		markdownDoc = new String(markdownDoc);
+        markdownDoc = new String(markdownDoc);
         
         var markdownParsed = marked(markdownDoc, markedOptions);
         
@@ -4228,12 +4228,12 @@
     editormd.isIE8   = (editormd.isIE && navigator.appVersion.match(/8./i) == "8.");
 
     /**
-     * 动态加载JS文件的方法
+     * Dynamically load JS file method
      * Load javascript file method
      * 
-     * @param {String}   fileName              JS文件名
-     * @param {Function} [callback=function()] 加载成功后执行的回调函数
-     * @param {String}   [into="head"]         嵌入页面的位置
+     * @param {String}   fileName              JS file name
+     * @param {Function} [callback=function()] Callback executed after successful load
+     * @param {String}   [into="head"]         Where to inject into the page
      */
 
     editormd.loadScript = function(fileName, callback, into) {
@@ -4276,7 +4276,7 @@
         }
     };
     
-    // 使用国外的CDN，加载速度有时会很慢，或者自定义URL
+    // Using external CDNs can be slow at times; customize the URL if needed
     // You can custom KaTeX load url.
     editormd.katexURL  = {
         css : "//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min",
@@ -4286,10 +4286,10 @@
     editormd.kaTeXLoaded = false;
     
     /**
-     * 加载KaTeX文件
+     * Load KaTeX files
      * load KaTeX files
      * 
-     * @param {Function} [callback=function()]  加载成功后执行的回调函数
+     * @param {Function} [callback=function()]  Callback executed after successful load
      */
     
     editormd.loadKaTeX = function (callback) {
@@ -4299,10 +4299,10 @@
     };
         
     /**
-     * 锁屏
+     * Lock screen
      * lock screen
      * 
-     * @param   {Boolean}   lock   Boolean 布尔值，是否锁屏
+     * @param   {Boolean}   lock   Whether to lock the screen
      * @returns {void}
      */
     
@@ -4311,11 +4311,11 @@
     };
         
     /**
-     * 动态创建对话框
+     * Dynamically create a dialog
      * Creating custom dialogs
      * 
-     * @param   {Object} options 配置项键值对 Key/Value
-     * @returns {dialog} 返回创建的dialog的jQuery实例对象
+     * @param   {Object} options Key/Value configuration options
+     * @returns {dialog} Returns the created dialog's jQuery instance
      */
 
     editormd.createDialog = function(options) {
@@ -4488,7 +4488,7 @@
                 if( nowLeft >= 0 ) {
                     if( nowLeft + dialog.width() <= $(window).width()) {
                         left = e.clientX - posX;
-                    } else {	
+                    } else {    
                         left = $(window).width() - dialog.width();
                         document.onmousemove = null;
                     }
@@ -4557,12 +4557,12 @@
     };
     
     /**
-     * 鼠标和触摸事件的判断/选择方法
+     * Mouse and touch event selection method
      * MouseEvent or TouchEvent type switch
      * 
-     * @param   {String} [mouseEventType="click"]    供选择的鼠标事件
-     * @param   {String} [touchEventType="touchend"] 供选择的触摸事件
-     * @returns {String} EventType                   返回事件类型名称
+     * @param   {String} [mouseEventType="click"]    Mouse event to use
+     * @param   {String} [touchEventType="touchend"] Touch event to use
+     * @returns {String} EventType                   Returns the event type name
      */
     
     editormd.mouseOrTouch = function(mouseEventType, touchEventType) {
@@ -4580,11 +4580,11 @@
     };
     
     /**
-     * 日期时间的格式化方法
+     * Datetime formatting method
      * Datetime format method
      * 
-     * @param   {String}   [format=""]  日期时间的格式，类似PHP的格式
-     * @returns {String}   datefmt      返回格式化后的日期时间字符串
+     * @param   {String}   [format=""]  Datetime format string (similar to PHP)
+     * @returns {String}   datefmt      Returns a formatted datetime string
      */
     
     editormd.dateFormat = function(format) {                
@@ -4618,11 +4618,11 @@
 
             case "UTC" :
                     datefmt = date.toUTCString();
-                break;	
+                break;    
 
             case "yy" :
                     datefmt = year2;
-                break;	
+                break;    
 
             case "year" :
             case "yyyy" :
@@ -4636,8 +4636,8 @@
 
             case "cn-week-day" :
             case "cn-wd" :
-                    var cnWeekDays = ["日", "一", "二", "三", "四", "五", "六"];
-                    datefmt = "星期" + cnWeekDays[weekDay];
+                    var cnWeekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                    datefmt = "Week " + cnWeekDays[weekDay];
                 break;
 
             case "week-day" :

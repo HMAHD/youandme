@@ -100,7 +100,7 @@ if (!$result)
                                         <a href="javascript:del(<?php echo $id; ?>,'<?php echo $text; ?>');">
                                             <button style="white-space: nowrap;" type="button"
                                                 class="btn btn-danger btn-rounded">
-                                                <i class=" mdi mdi-delete-empty mr-1"></i>删除
+                                                <i class=" mdi mdi-delete-empty mr-1"></i>Delete
                                             </button>
                                         </a>
                                     </td>
