@@ -19,7 +19,7 @@ if (mysqli_num_rows($loginresult)) {
     $login = mysqli_fetch_array($loginresult);
 } else {
     header("Location:login.php");
-    die("<script>alert('parameter error')</script>");
+    exit();
 }
 $sql = "select * from login";
 $result = mysqli_query($connect, $sql);

@@ -4,6 +4,8 @@ session_start();
 @($pw = $_POST['pw']);
 include_once "Database.php";
 
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "select * from login where user =?";
     $stmt = $conn->prepare($sql);
