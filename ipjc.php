@@ -1,0 +1,28 @@
+<!--
+ * @Version：You & Me 2.0
+ * @Author: Akash
+ * @Date: 2024-11-09 07:00:00
+ * @LastEditTime: 2024-11-08
+ * @Description: Of course, bad code can be cleaned up. But it’s very expensive.
+ * @Copyright (c) 2024 by Akash All Rights Reserved.
+-->
+ 
+<?php
+
+include_once 'admin/connect.php';
+
+$ipchaxun = "select * from IPerror";
+$ipres = mysqli_query($connect, $ipchaxun);
+
+while ($IPinfo = mysqli_fetch_array($ipres)) {
+
+    $iplist = $IPinfo['State'];
+
+    $banned_ip = array($iplist);
+
+    $ip = $_SERVER["REMOTE_ADDR"];
+
+    if (in_array(getenv("REMOTE_ADDR"), $banned_ip)) {
+        die("<script>alert('Your IP($ip)Banned from accessing this page');location.href = 'error.php';</script>");
+    }
+}
