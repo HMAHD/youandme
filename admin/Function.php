@@ -29,8 +29,11 @@ function checkQQ($qq)
 
 function replaceSpecialChar($Symbol)
 {
-    $Filter = "/\ |\/|\~|\!|\@|\-|\=|\#|\\$|\%|\^|\&|\:|\*|\"|\(|\)|\_|\+|\{|\}|\<|\>|\?|\[|\]|\,|\/|\;|\'|\`|\=|\\\|\||/";
-    return preg_replace($Filter, "", $Symbol);
+    // Fixed regex pattern - properly escaped and structured
+    $Filter = '/[\s\/~!@#\$%^&*():;\"\'\{\}\[<>\?\|\]\,\=\-\\\`]/';
+    $result = preg_replace($Filter, '', $Symbol);
+    // Return the original if preg_replace fails
+    return $result === null ? $Symbol : $result;
 }
 
 function time_tran($time)
@@ -70,19 +73,35 @@ function time_tran($time)
     return $text;
 }
 
-
-
-
 function get_ip_city_New($ip)
 {
+    // Check if cURL is available
+    if (!function_exists('curl_init')) {
+        return 'Unknown';
+    }
+    
     $ch = curl_init();
     $url = 'https://www.inte.net/tool/ip/api.ashx?ip='.$ip.'&datatype=json';
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5); // Set timeout to avoid hanging
     $location = curl_exec($ch);
+    
+    // Check for cURL errors
+    if (curl_errno($ch)) {
+        curl_close($ch);
+        return 'Unknown';
+    }
+    
     curl_close($ch);
     $data = json_decode($location, true);
-    return $data['data'][0];
+    
+    // Check if data is valid
+    if (is_array($data) && isset($data['data']) && is_array($data['data']) && isset($data['data'][0])) {
+        return $data['data'][0];
+    }
+    
+    return 'Unknown';
 }

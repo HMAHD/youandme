@@ -26,8 +26,6 @@ include_once 'head.php';
 <head>
     <meta charset="utf-8" />
     <title><?php echo $text['title'] ?> — <?php echo $text['card2'] ?></title>
-    <!-- Gravatar script for profile pictures -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
 </head>
 
 <body>
@@ -91,21 +89,66 @@ include_once 'head.php';
             </div>
         </div>
         <script>
-            // Generate Gravatar URL based on IP hash
-            function generateGravatar(ip, name) {
-                // Create a hash of the IP address
-                var hash = md5(ip);
-                // Return Gravatar URL with fallback to identicon
-                return 'https://www.gravatar.com/avatar/' + hash + '?d=identicon&s=100';
+            // Function to load MD5 library if not already loaded
+            function loadMD5Library(callback) {
+                if (typeof md5 !== 'undefined') {
+                    // MD5 already loaded
+                    console.log('MD5 library already loaded');
+                    if (callback) callback();
+                    return;
+                }
+                
+                // Create script element to load MD5 library
+                var script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js';
+                script.onload = function() {
+                    console.log('MD5 library loaded successfully');
+                    if (callback) callback();
+                };
+                script.onerror = function() {
+                    console.error('Failed to load MD5 library');
+                    // Use fallback method
+                    if (callback) callback();
+                };
+                document.head.appendChild(script);
             }
 
-            // Set profile pictures for existing messages
-            $(document).ready(function() {
+            // Generate Gravatar URL based on IP hash
+            function generateGravatar(ip, name) {
+                // Check if md5 function is available
+                if (typeof md5 !== 'undefined') {
+                    try {
+                        // Create a hash of the IP address
+                        var hash = md5(ip);
+                        // Return Gravatar URL with fallback to identicon
+                        return 'https://www.gravatar.com/avatar/' + hash + '?d=identicon&s=100';
+                    } catch (e) {
+                        console.error('Error generating MD5 hash:', e);
+                        // Fallback to default avatar
+                        return 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y';
+                    }
+                } else {
+                    // Fallback to default avatar if md5 is not available
+                    console.warn('MD5 function not available, using fallback avatar');
+                    return 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y';
+                }
+            }
+
+            // Initialize profile pictures for existing messages
+            function initializeProfilePictures() {
                 $('.gravatar').each(function() {
                     var ip = $(this).data('ip');
                     var name = $(this).data('name');
                     var gravatarUrl = generateGravatar(ip, name);
                     $(this).attr('src', gravatarUrl);
+                });
+            }
+
+            // Set profile pictures for existing messages when document is ready
+            $(document).ready(function() {
+                // Load MD5 library and initialize profile pictures
+                loadMD5Library(function() {
+                    initializeProfilePictures();
                 });
             });
 
@@ -126,11 +169,25 @@ include_once 'head.php';
                 }
 
                 let nonub = /^[0-9]+$/;
-                let weifan = new RegExp("[<?php echo $Setinfo['lanjiezf'] ?>]");
+                // Check if forbidden words are set and not empty
+                let forbiddenWords = "<?php echo $Setinfo['lanjiezf'] ?>";
+                let weifan = null;
+                
+                // Only create regex if forbidden words are not the default placeholder
+                if (forbiddenWords && forbiddenWords !== 'Please enter a valid placeholder' && forbiddenWords.trim() !== '') {
+                    try {
+                        // Escape special regex characters and create regex pattern
+                        let escapedWords = forbiddenWords.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                        weifan = new RegExp(escapedWords, 'i'); // Case insensitive
+                    } catch (e) {
+                        console.error('Error creating regex for forbidden words:', e);
+                    }
+                }
+                
                 if (nonub.test(text)) {
                     toastr["warning"]("The content is pure numbers and has been blocked!", "You & Me");
                     return false;
-                } else if (weifan.test(text)) {
+                } else if (weifan && weifan.test(text)) {
                     toastr["warning"]("You have entered forbidden words, please refrain from inappropriate language.", "You & Me");
                     return false;
                 }
@@ -154,6 +211,10 @@ include_once 'head.php';
                         setInterval(() => {
                             $('#leavingPost').removeAttr("disabled");
                         }, 5000);
+                        
+                        // Log the response for debugging
+                        console.log('Server response:', res);
+                        
                         if (res == 1) {
                             toastr["success"]("Message submitted successfully. Please refresh the page to view!", "You & Me");
                             $('#leavingPost').text('Message sent');
@@ -161,20 +222,30 @@ include_once 'head.php';
                             $("input[name='name']").val('');
                             $("textarea[name='text']").val('');
                         } else if (res == 0) {
-                            toastr["error"]("Message submission failed!", "You & Me");
+                            toastr["error"]("Message submission failed! Please try again.", "You & Me");
                             $('#leavingPost').text('Message failed');
-                        } else if (res == 5 || res == 50) {
-                            toastr["error"]("Message submission failed — Parameter error", "You & Me");
+                        } else if (res == 5) {
+                            toastr["error"]("Message submission failed — Please check your name and message fields.", "You & Me");
+                            $('#leavingPost').text('Message failed');
+                        } else if (res == 50) {
+                            toastr["error"]("Message submission failed — Server error. Please try again later.", "You & Me");
                             $('#leavingPost').text('Message failed');
                         } else if (res == 8) {
                             toastr["error"]("Message submission failed — You have already submitted a message today!", "You & Me");
                             $('#leavingPost').text('Message failed');
+                        } else if (res == 4) {
+                            toastr["error"]("Message submission failed — Invalid IP address.", "You & Me");
+                            $('#leavingPost').text('Message failed');
                         } else {
-                            toastr["error"]("Unknown error!", "You & Me");
+                            // Display the actual response for debugging
+                            toastr["error"]("Unexpected response: " + res, "You & Me");
+                            $('#leavingPost').text('Message failed');
                         }
                     },
-                    error: function(err) {
-                        toastr["error"]("Network error, please try again later!", "You & Me");
+                    error: function(xhr, status, error) {
+                        console.log('AJAX Error:', xhr, status, error);
+                        toastr["error"]("Network error: " + error + ". Please try again later!", "You & Me");
+                        $('#leavingPost').text('Message failed');
                     }
                 })
             });
