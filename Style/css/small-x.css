@@ -276,3 +276,23 @@ textarea {
     top: 6rem;
     right: 1rem;
 }
+
+@media (max-width: 576px) {
+  .bg-img .middle {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .bg-img .middle .img-male,
+  .bg-img .middle .img-female,
+  .bg-img .middle .love-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bg-img .middle .love-icon img {
+    margin: 0 auto;
+  }
+}

@@ -264,29 +264,27 @@ if ($diy['Pjaxkg'] == "1"):
     z-index: 10000 !important; /* Ensure navbar is above other content */
 }
 
-/* Remove any padding that would push content down */
+/* Base layout for the avatar wrapper */
 .bg-wrap {
-    padding-top: 0 !important;
     margin: 0 !important;
     position: relative;
     z-index: 1; /* Ensure avatar content is below navbar */
 }
 
-@media (max-width: 992px) {
-    .bg-wrap {
-        padding-top: 80px !important;
-    }
+/* Provide breathing room between the fixed navbar and avatar section */
+.navbar-container + .bg-wrap .bg-img {
+    padding-top: clamp(120px, 18vh, 200px) !important;
 }
 
 @media (max-width: 768px) {
-    .bg-wrap {
-        padding-top: 70px !important;
+    .navbar-container + .bg-wrap .bg-img {
+        padding-top: clamp(100px, 22vh, 160px) !important;
     }
 }
 
 @media (max-width: 480px) {
-    .bg-wrap {
-        padding-top: 60px !important;
+    .navbar-container + .bg-wrap .bg-img {
+        padding-top: clamp(90px, 26vh, 140px) !important;
     }
 }
 
