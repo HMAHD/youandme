@@ -13,6 +13,11 @@ $hideElement = ($row_count < 1);
 </head>
 
 <body>
+    <?php
+    // Include the avatar component
+    include_once 'components/avatar.php';
+    ?>
+    
     <div id="pjax-container">
         <div class="central">
             <div class="title">

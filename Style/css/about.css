@@ -6,7 +6,7 @@
   width: 100%;
   text-align: center;
   font-size: 2rem;
-  font-family: 'Noto Serif SC', serif;
+  font-family: "Noto Serif SC", serif;
   font-weight: 700;
   color: #646161;
 }
@@ -16,7 +16,8 @@
   margin: 0 0.6rem;
 }
 .central-600 {
-  background: url("https://img.gejiba.com/images/2e34a88491d60fa809883cc7cd149759.jpg") no-repeat center;
+  background: url("https://img.gejiba.com/images/2e34a88491d60fa809883cc7cd149759.jpg")
+    no-repeat center;
   border-radius: 3rem;
   background-size: cover;
   overflow: hidden;
@@ -24,8 +25,8 @@
   border: 2px solid rgba(208, 206, 206, 0.4) !important;
 }
 .central-600 .botui-app-container {
-    width: 100%;
-    background: #35353563;
+  width: 100%;
+  background: #35353563;
 }
 .central-600 .botui-container {
   border-radius: 3rem;
@@ -34,7 +35,7 @@
 .central-600 .botui-actions-buttons-button {
   border-radius: 8px;
   background: #919191;
-  font-family: 'Noto Serif SC', serif !important;
+  font-family: "Noto Serif SC", serif !important;
   font-weight: 400 !important;
 }
 .central-600 .botui-message-content {
@@ -47,6 +48,6 @@
   background-color: #919292;
 }
 .central-600 .botui-container {
-    padding: 1rem;
-    box-sizing: border-box;
+  padding: 1rem;
+  box-sizing: border-box;
 }

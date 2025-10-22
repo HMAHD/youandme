@@ -1,0 +1,333 @@
+/* Advanced Professional Footer - Unique & Modern Design */
+
+.advanced-footer {
+  margin-top: 80px;
+  padding: 0 20px 30px;
+  position: relative;
+  clear: both;
+  z-index: 10;
+  background: transparent;
+}
+
+.advanced-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.advanced-footer-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  z-index: 2;
+}
+
+.footer-main-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 40px 30px 20px;
+}
+
+.footer-branding {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer-logo {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.footer-logo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+.footer-tagline {
+  color: #7f8c8d;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 400;
+  max-width: 300px;
+}
+
+.footer-links-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.footer-section-title {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.footer-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: #667eea;
+  border-radius: 1px;
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.footer-link {
+  color: #7f8c8d;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.footer-link:hover {
+  color: #667eea;
+  transform: translateX(5px);
+}
+
+.footer-link::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  width: 3px;
+  height: 0;
+  background: #667eea;
+  border-radius: 2px;
+  transition: height 0.3s ease;
+}
+
+.footer-link:hover::before {
+  height: 70%;
+}
+
+.footer-stats-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 15px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 12px;
+  padding: 20px 15px;
+  text-align: center;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #667eea;
+  font-family: "Noto Serif SC", serif;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+  margin: 25px 0;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0 30px 25px;
+}
+
+.footer-copyright {
+  color: #95a5a6;
+  font-size: 0.9rem;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 400;
+}
+
+.footer-social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7f8c8d;
+  background: rgba(127, 140, 141, 0.1);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-link:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .footer-main-content {
+    grid-template-columns: 1fr 1fr;
+    padding: 30px 25px 15px;
+  }
+  
+  .footer-branding {
+    grid-column: 1 / -1;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .footer-tagline {
+    margin: 0 auto;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 25px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .advanced-footer {
+    margin-top: 60px;
+    padding: 0 15px 25px;
+  }
+  
+  .footer-main-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 25px 20px 15px;
+  }
+  
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stat-card {
+    padding: 15px 10px;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .advanced-footer-container {
+    border-radius: 15px;
+  }
+  
+  .footer-main-content {
+    padding: 20px 15px 10px;
+  }
+  
+  .footer-logo {
+    font-size: 1.5rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .footer-bottom {
+    padding: 0 15px 15px;
+  }
+  
+  .footer-copyright {
+    font-size: 0.85rem;
+  }
+}

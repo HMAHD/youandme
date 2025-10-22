@@ -11,10 +11,10 @@
 .central .list_texts .top-title {
   font-size: 1.5rem;
   line-height: 4rem;
-  font-family: 'Noto Serif SC', serif;
+  font-family: "Noto Serif SC", serif;
   font-weight: 700;
 }
-.list_texts img{
+.list_texts img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -24,9 +24,9 @@
   border: 1px solid rgba(208, 206, 206, 0.6) !important;
   margin: 1.5rem 0;
 }
-.list_texts img:hover{
-    /*cursor: pointer;*/
-    cursor:url(../cur/hover.cur), pointer;
+.list_texts img:hover {
+  /*cursor: pointer;*/
+  cursor: url(../cur/hover.cur), pointer;
 }
 .row .card .list_texts {
   padding: 2rem 2rem;
@@ -63,10 +63,10 @@
 }
 .row .card .list_texts span {
   font-size: 1.3rem;
-  font-family: 'Noto Serif SC', serif;
+  font-family: "Noto Serif SC", serif;
   font-weight: 700;
 }
-.open img{
+.open img {
   width: 100%;
   height: 100%;
   border-radius: 1rem;

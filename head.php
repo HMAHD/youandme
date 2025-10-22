@@ -3,7 +3,7 @@
  * @Author: Akash
  * @Date: 2024-11-08 11:00:00
  * @LastEditTime: 2024-11-08
- * @Description: Of course, bad code can be cleaned up. But it’s very expensive.
+ * @Description: Of course, bad code can be cleaned up. But it's very expensive.
  * @Copyright (c) 2024 by Akash All Rights Reserved.
 -->
 <?php
@@ -42,8 +42,6 @@ if (is_string($copy)) {
 $icp = $text['icp'];
 $Animation = $text['Animation'];
 ?>
-
-
 
 <script>
     console.log("%c Q & A | +94767378901", "color:#fff;background:#000;padding:8px 15px;font-weight: 700;border-radius:15px");
@@ -128,6 +126,57 @@ $Animation = $text['Animation'];
     }
 
     show_date_time();
+    
+    // Navbar scroll behavior - improved version
+    let lastScrollTop = 0;
+    let ticking = false;
+    
+    function updateNavbar() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let navbar = document.querySelector('.navbar-container');
+        
+        if (!navbar) {
+            ticking = false;
+            return;
+        }
+        
+        // Show navbar when at top of page
+        if (scrollTop <= 0) {
+            navbar.style.transform = 'translate(-50%, 0)';
+            navbar.style.opacity = '1';
+        } 
+        // Hide navbar when scrolling down
+        else if (scrollTop > lastScrollTop && scrollTop > 100) {
+            navbar.style.transform = 'translate(-50%, -100%)';
+            navbar.style.opacity = '0';
+        }
+        // Show navbar when scrolling up
+        else if (scrollTop < lastScrollTop) {
+            navbar.style.transform = 'translate(-50%, 0)';
+            navbar.style.opacity = '1';
+        }
+        
+        lastScrollTop = scrollTop;
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+
+    // Ensure navbar is visible on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        let navbar = document.querySelector('.navbar-container');
+        if (navbar) {
+            navbar.style.transform = 'translate(-50%, 0)';
+            navbar.style.opacity = '1';
+        }
+    });
 </script>
 <link rel="shortcut icon" href="/favicon.ico" />
 <meta name="keywords"
@@ -149,6 +198,8 @@ $Animation = $text['Animation'];
 <link rel="stylesheet" href="../Style/css/list.css?LikeGirl=<?php echo $version ?>">
 <link rel="stylesheet" href="../Style/toastr/toastr.css?LikeGirl=<?php echo $version ?>">
 <link rel="stylesheet" href="../Style/css/loadinglike.css?LikeGirl=<?php echo $version ?>">
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../Style/css/components.css?<?php echo time(); ?>">
 <script src="../Style/Font/font_leav/iconfont.js"></script>
 <script src="../Style/Font/font_leav/iconfont.js"></script>
 <script src="../Botui/botui.min.js"></script>
@@ -158,6 +209,7 @@ $Animation = $text['Animation'];
 <script src="../Style/pagelir/spotlight.bundle.js"></script>
 <script src="../Style/js/funlazy.min.js"></script>
 <script src="../Style/js/loading.js?LikeGirl=<?php echo $version ?>"></script>
+<script src="../Style/js/components.js?<?php echo time(); ?>"></script>
 
 <?php
 echo htmlspecialchars_decode($diy['headCon'], ENT_QUOTES);
@@ -205,96 +257,161 @@ if ($diy['Pjaxkg'] == "1"):
 <?php endif; ?>
 <script src="../Style/js/nprogress.js?LikeGirl=<?php echo $version ?>"></script>
 <link href="../Style/css/nprogress.css?LikeGirl=<?php echo $version ?>" rel="stylesheet" type="text/css">
-<!-- Header navigation bar -->
-<div class="header-wrap">
-    <div class="header">
-        <div class="logo">
-            <h1><a class="alogo" href="index.php"><?php echo $text['logo'] ?></a></h1>
-        </div>
-        <div class="word">
-            <span class="wenan"><?php echo $text['writing'] ?></span>
-        </div>
-    </div>
-</div>
-
-<!-- Avatar content -->
-<div class="bg-wrap">
-    <div class="bg-img">
-        <div class="central central-800">
-            <div
-                class="middle <?php if ($text['Animation'] == "1") { ?>animated fadeInDown<?php } ?> <?php if ($diy['Blurkg'] == "2") { ?>Blurkg<?php } ?>">
-                <div class="img-male">
-                    <img src="https://q1.qlogo.cn/g?b=qq&nk=<?php echo $text['boyimg'] ?>&s=640" draggable="false">
-                    <span><?php echo $text['boy'] ?></span>
-                </div>
-                <div class="love-icon">
-                    <img src="Style/img/like.svg" draggable="false">
-                </div>
-                <div class="img-female">
-                    <img src="https://q1.qlogo.cn/g?b=qq&nk=<?php echo $text['girlimg'] ?>&s=640" draggable="false">
-                    <span><?php echo $text['girl'] ?></span>
-                </div>
-            </div>
-        </div>
-        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-            <defs>
-                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-            </defs>
-            <g class="parallax">
-                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-            </g>
-        </svg>
-    </div>
-</div>
-
-
 <style>
-    .bg-img {
-        background: url(<?php echo $text['bgimg'] ?>) no-repeat center !important;
-        background-size: cover !important;
-    }
+/* Position navbar at the very top */
+.navbar-container {
+    top: 0 !important;
+    z-index: 10000 !important; /* Ensure navbar is above other content */
+}
 
-    .wenan {
-        color: rgb(97 97 97);
-        transition: all 0.2s linear;
-    }
+/* Remove any padding that would push content down */
+.bg-wrap {
+    padding-top: 0 !important;
+    margin: 0 !important;
+    position: relative;
+    z-index: 1; /* Ensure avatar content is below navbar */
+}
 
-    .alogo {
-        color: rgb(97 97 97);
-        transition: all 0.2s linear;
+@media (max-width: 992px) {
+    .bg-wrap {
+        padding-top: 80px !important;
     }
+}
 
-    /* webkit, opera, IE9 (Google Chrome)*/
-    ::selection {
-        background: #6f6f6fc7;
-        color: #ffffff;
+@media (max-width: 768px) {
+    .bg-wrap {
+        padding-top: 70px !important;
     }
+}
 
-    /* mozilla firefox（Firefox） */
-    ::-moz-selection {
-        background: #6f6f6fc7;
-        color: #ffffff;
+@media (max-width: 480px) {
+    .bg-wrap {
+        padding-top: 60px !important;
     }
+}
 
-    .delay-03s {
-        -webkit-animation-delay: .3s;
-        animation-delay: .3s;
-    }
+/* Ensure no margin or padding on html and body elements */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
-    .Blurkg {
-        backdrop-filter: blur(0px) !important;
-        -webkit-backdrop-filter: blur(0px) !important;
-        background: transparent !important;
-    }
+/* Remove default margin and padding from all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    .cpt-loading-mask.column {
-        background: transparent !important;
+/* Remove padding from body to eliminate space at top */
+body {
+    padding-top: 0 !important;
+    margin: 0 !important;
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 992px) {
+    body {
+        padding-top: 0 !important;
+        margin: 0 !important;
     }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 0 !important;
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 0 !important;
+        margin: 0 !important;
+    }
+}
+
+/* Background image from database */
+.bg-img {
+    background: url(<?php echo $text['bgimg'] ?>) no-repeat center top !important;
+    background-size: cover !important;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 !important;
+    position: relative;
+    margin: 0 !important;
+    min-height: 400px;
+    /* Ensure proper height calculation */
+    height: auto;
+    /* Make sure it starts at the very top */
+    top: 0 !important;
+}
+
+/* Position waves at the bottom of the background image */
+.bg-img .waves {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    height: 5rem !important;
+    margin-bottom: -7px !important; /* Keep the existing fix for Safari */
+    /* Ensure waves don't interfere with positioning */
+    z-index: 1;
+}
+
+/* Fix for central class causing spacing at top */
+.bg-img .central {
+    margin: 0 auto !important;
+    padding-top: 0 !important;
+    padding: 0 !important;
+    /* Ensure it doesn't push content down */
+    margin-top: 0 !important;
+}
+
+/* More specific override for central-800 class */
+.bg-img .central.central-800 {
+    margin: 0 auto !important;
+    margin-top: 0 !important;
+}
+
+.wenan {
+    color: rgb(97 97 97);
+    transition: all 0.2s linear;
+}
+
+.alogo {
+    color: rgb(97 97 97);
+    transition: all 0.2s linear;
+}
+
+/* webkit, opera, IE9 (Google Chrome)*/
+::selection {
+    background: #6f6f6fc7;
+    color: #ffffff;
+}
+
+/* mozilla firefox（Firefox） */
+::-moz-selection {
+    background: #6f6f6fc7;
+    color: #ffffff;
+}
+
+.delay-03s {
+    -webkit-animation-delay: .3s;
+    animation-delay: .3s;
+}
+
+.Blurkg {
+    backdrop-filter: blur(0px) !important;
+    -webkit-backdrop-filter: blur(0px) !important;
+    background: transparent !important;
+}
+
+.cpt-loading-mask.column {
+    background: transparent !important;
+}
 </style>
 <style>
-    <?php echo $diy['cssCon'] ?>
+<?php echo $diy['cssCon'] ?>
 </style>

@@ -12,6 +12,11 @@ $about = mysqli_fetch_array($resab);
 </head>
 
 <body>
+    <?php
+    // Include the avatar component
+    include_once 'components/avatar.php';
+    ?>
+    
     <div id="pjax-container">
         <style>
             .central-600 {
