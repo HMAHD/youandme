@@ -258,106 +258,189 @@ if ($diy['Pjaxkg'] == "1"):
 <script src="../Style/js/nprogress.js?LikeGirl=<?php echo $version ?>"></script>
 <link href="../Style/css/nprogress.css?LikeGirl=<?php echo $version ?>" rel="stylesheet" type="text/css">
 <style>
-/* Position navbar at the very top */
-.navbar-container {
-    top: 0 !important;
-    z-index: 10000 !important; /* Ensure navbar is above other content */
-}
-
-/* Remove any padding that would push content down */
-.bg-wrap {
-    padding-top: 0 !important;
-    margin: 0 !important;
-    position: relative;
-    z-index: 1; /* Ensure avatar content is below navbar */
-}
-
-@media (max-width: 992px) {
-    .bg-wrap {
-        padding-top: 80px !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .bg-wrap {
-        padding-top: 70px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .bg-wrap {
-        padding-top: 60px !important;
-    }
-}
-
-/* Ensure no margin or padding on html and body elements */
+/* ===== RESET AND BASE STYLES ===== */
 html, body {
     margin: 0 !important;
     padding: 0 !important;
+    height: 100% !important;
 }
 
-/* Remove default margin and padding from all elements */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Remove padding from body to eliminate space at top */
+/* Override the body background from content.css completely */
 body {
-    padding-top: 0 !important;
+    background-image: none !important;
+    background-size: auto !important;
+    background-color: transparent !important;
+    animation: none !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    cursor: url(../cur/cursor.cur), default !important;
     margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
     scroll-behavior: smooth;
 }
 
+/* ===== BACKGROUND WRAP (Main Hero Section) ===== */
+.bg-wrap {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    z-index: 1 !important;
+    /* Background image will be applied here */
+}
+
+/* ===== NAVBAR POSITIONING ===== */
+.navbar-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 10000 !important;
+    width: calc(100% - 40px) !important;
+    max-width: 1200px !important;
+    padding-top: 20px !important;
+    margin: 0 !important;
+}
+
+/* ===== AVATAR CONTENT (bg-img) ===== */
+.bg-img {
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Avatar middle content with space from navbar */
+.bg-img .middle {
+    margin-top: 120px !important;
+    margin-bottom: 0 !important;
+    padding: 4rem 5rem 3rem !important;
+}
+
+/* Wave positioning at bottom of bg-img */
+.bg-img .waves {
+    position: relative !important;
+    width: 100% !important;
+    height: 5rem !important;
+    margin-top: 5rem !important;
+    margin-bottom: -7px !important;
+}
+
+/* ===== PJAX CONTAINER (Rest of page content) ===== */
+#pjax-container {
+    flex: 1 0 auto !important;
+    width: 100% !important;
+    background-color: #f8f9fa !important;
+    background-image: linear-gradient(
+        to right,
+        rgba(37, 82, 110, 0.1) 1px,
+        transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(37, 82, 110, 0.1) 1px, transparent 1px);
+    background-size: 1.5rem 1.5rem;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
 @media (max-width: 992px) {
-    body {
-        padding-top: 0 !important;
-        margin: 0 !important;
+    .navbar-container {
+        width: calc(100% - 30px) !important;
+        padding-top: 15px !important;
+    }
+    .bg-img .middle {
+        margin-top: 120px !important;
+        padding: 3rem 3rem 2rem !important;
     }
 }
 
 @media (max-width: 768px) {
-    body {
-        padding-top: 0 !important;
-        margin: 0 !important;
+    .navbar-container {
+        width: calc(100% - 20px) !important;
+        padding-top: 10px !important;
+    }
+    .bg-img .middle {
+        margin-top: 110px !important;
+        padding: 3rem 2rem !important;
     }
 }
 
 @media (max-width: 480px) {
-    body {
-        padding-top: 0 !important;
-        margin: 0 !important;
+    .navbar-container {
+        width: calc(100% - 20px) !important;
+        padding-top: 10px !important;
+    }
+    .bg-img .middle {
+        margin-top: 100px !important;
+        padding: 2rem 1.5rem !important;
     }
 }
 
-/* Background image from database */
+/* ===== BACKGROUND IMAGE FROM DATABASE ===== */
 .bg-img {
     background: url(<?php echo $text['bgimg'] ?>) no-repeat center top !important;
     background-size: cover !important;
-    width: 100%;
+    background-attachment: fixed !important;
+    width: 100% !important;
     box-sizing: border-box;
     padding: 0 !important;
-    position: relative;
     margin: 0 !important;
-    min-height: 400px;
-    /* Ensure proper height calculation */
-    height: auto;
-    /* Make sure it starts at the very top */
+    position: relative;
+    min-height: auto !important;
     top: 0 !important;
+    left: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    background-position: center top !important;
+}
+
+/* On mobile, disable fixed attachment for better performance */
+@media (max-width: 768px) {
+    .bg-img {
+        background-attachment: scroll !important;
+    }
 }
 
 /* Position waves at the bottom of the background image */
 .bg-img .waves {
-    position: absolute !important;
-    bottom: 0 !important;
+    position: relative !important;
+    bottom: auto !important;
     left: 0 !important;
     width: 100% !important;
     margin: 0 !important;
     height: 5rem !important;
     margin-bottom: -7px !important; /* Keep the existing fix for Safari */
     /* Ensure waves don't interfere with positioning */
-    z-index: 1;
+    z-index: 2; /* Above background but below navbar */
+}
+
+/* Avatar middle content - no bottom margin, waves will be below */
+.bg-img .middle {
+    margin-bottom: 0 !important;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .bg-img .middle {
+        margin-bottom: 0 !important;
+    }
 }
 
 /* Fix for central class causing spacing at top */

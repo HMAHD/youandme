@@ -29,11 +29,14 @@ include_once 'head.php';
 </head>
 
 <body>
-    <?php
-    // Include the avatar component
-    include_once 'components/avatar.php';
-    ?>
-    
+    <!-- Background image section with avatar -->
+    <div class="bg-wrap">
+        <?php
+        // Include the avatar component
+        include_once 'components/avatar.php';
+        ?>
+    </div>
+
     <div id="pjax-container">
         <div class="MessageButtonCard" id="MessageBtn">
             <svg t="1730880204691" class="Message-Icon icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="13875" width="200" height="200">

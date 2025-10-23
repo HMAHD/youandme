@@ -1,6 +1,5 @@
 <!-- Avatar content -->
-<div class="bg-wrap">
-    <div class="bg-img">
+<div class="bg-img">
         <div class="central central-800">
             <div
                 class="middle <?php if ($text['Animation'] == "1") { ?>animated fadeInDown<?php } ?> <?php if ($diy['Blurkg'] == "2") { ?>Blurkg<?php } ?>">
@@ -30,4 +29,3 @@
             </g>
         </svg>
     </div>
-</div>

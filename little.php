@@ -11,10 +11,13 @@ $resarticle = mysqli_query($connect, $article);
 </head>
 
 <body>
-    <?php
-    // Include the avatar component
-    include_once 'components/avatar.php';
-    ?>
+    <!-- Background image section with avatar -->
+    <div class="bg-wrap">
+        <?php
+        // Include the avatar component
+        include_once 'components/avatar.php';
+        ?>
+    </div>
     
     <div id="pjax-container">
         <div class="central">

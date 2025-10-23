@@ -13,11 +13,14 @@ $resImg = mysqli_query($connect, $loveImg);
 </head>
 
 <body>
-    <?php
-    // Include the avatar component
-    include_once 'components/avatar.php';
-    ?>
-    
+    <!-- Background image section with avatar -->
+    <div class="bg-wrap">
+        <?php
+        // Include the avatar component
+        include_once 'components/avatar.php';
+        ?>
+    </div>
+
     <div id="pjax-container">
         <h4 class="text-ce central">Record your most beautiful moments</h4>
         <div class="row central">

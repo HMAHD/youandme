@@ -9,14 +9,17 @@ include_once 'head.php';
 </head>
 
 <body>
-    <?php
-    // Include the navigation component
-    include_once 'components/navbar.php';
-    
-    // Include the avatar component
-    include_once 'components/avatar.php';
-    ?>
-    
+    <!-- Background image section with navbar and avatar on top -->
+    <div class="bg-wrap">
+        <?php
+        // Include the navigation component
+        include_once 'components/navbar.php';
+
+        // Include the avatar component
+        include_once 'components/avatar.php';
+        ?>
+    </div>
+
     <div id="pjax-container">
         <!-- time zone -->
         <div class="time">
