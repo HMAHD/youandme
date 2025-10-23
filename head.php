@@ -273,9 +273,14 @@ html, body {
 
 /* Override the body background from content.css completely */
 body {
-    background-image: none !important;
-    background-size: auto !important;
-    background-color: transparent !important;
+    background-color: #f8f9fa !important;
+    background-image: linear-gradient(
+        to right,
+        rgba(37, 82, 110, 0.1) 1px,
+        transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(37, 82, 110, 0.1) 1px, transparent 1px) !important;
+    background-size: 1.5rem 1.5rem !important;
     animation: none !important;
     min-height: 100vh !important;
     display: flex !important;
@@ -347,14 +352,7 @@ body {
 #pjax-container {
     flex: 1 0 auto !important;
     width: 100% !important;
-    background-color: #f8f9fa !important;
-    background-image: linear-gradient(
-        to right,
-        rgba(37, 82, 110, 0.1) 1px,
-        transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(37, 82, 110, 0.1) 1px, transparent 1px);
-    background-size: 1.5rem 1.5rem;
+    background: transparent !important;
 }
 
 /* ===== RESPONSIVE ADJUSTMENTS ===== */
@@ -493,6 +491,50 @@ body {
 
 .cpt-loading-mask.column {
     background: transparent !important;
+}
+
+/* ===== FOOTER FIXES ===== */
+.footer-container {
+    overflow: visible !important;
+    padding: 20px !important;
+    margin-top: 40px !important;
+}
+
+.footer-content {
+    overflow: visible !important;
+    padding: 30px !important;
+}
+
+.footer-bottom {
+    margin: 0 !important;
+    padding: 25px 30px 25px !important;
+    border-radius: 0 0 20px 20px !important;
+}
+
+footer {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+/* ===== CARD DESCRIPTION CONSISTENCY ===== */
+.card-wrap .row .card .text p,
+.card-wrap .card-b .text p {
+    font-size: 1.1rem !important;
+    letter-spacing: 0.3rem !important;
+    color: #959595 !important;
+    font-weight: 500 !important;
+    margin-top: 0.25rem !important;
+    line-height: 1.5 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+/* Ensure card titles are consistent too */
+.card-wrap .row .card .text span,
+.card-wrap .card-b .text span {
+    font-size: 1.8rem !important;
+    line-height: 3rem !important;
+    letter-spacing: 0.2rem !important;
 }
 </style>
 <style>

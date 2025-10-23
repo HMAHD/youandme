@@ -363,10 +363,9 @@ a:hover {
   color: #959595;
   margin-top: 0.25rem;
   font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 12em;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .card-wrap .row .flex-h {
@@ -405,10 +404,14 @@ a:hover {
 }
 
 .card-wrap .card-b .text p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
   color: #959595;
   font-weight: 500;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .mt-2rem {
