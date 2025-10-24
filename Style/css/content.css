@@ -188,6 +188,58 @@ a:hover {
   border: 0.2rem solid #fff;
 }
 
+/* Update styles for avatar borders */
+.bg-img .middle .img-male > .avatar-border,
+.bg-img .middle .img-female > .avatar-border {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.bg-img .middle .img-male > .avatar-border::before,
+.bg-img .middle .img-female > .avatar-border::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: url("../img/avatar/border.gif") no-repeat center center;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  border-radius: 50%;
+  z-index: 1;
+  animation: rotate 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.bg-img .middle .img-male > .avatar-border img,
+.bg-img .middle .img-female > .avatar-border img {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-sizing: border-box;
+  z-index: 2;
+  object-fit: cover;
+}
+
 .bg-img .middle .img-male span {
   display: block;
   text-align: center;
