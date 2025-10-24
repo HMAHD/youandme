@@ -504,46 +504,6 @@ body {
 .footer-content {
     overflow: visible !important;
     padding: 15px !important; /* Reduced padding */
-    transition: all 0.3s ease;
-    border-radius: 20px;
-}
-
-.footer-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.98) 100%);
-}
-
-.footer-brand {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.footer-brand:hover {
-    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
-    transform: scale(1.05);
-}
-
-.footer-brand span {
-    font-weight: 700;
-    font-family: "Noto Serif SC", serif;
-    background: linear-gradient(90deg, #ff9a9e, #a1c4fd);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    transition: all 0.3s ease;
-}
-
-.footer-brand:hover span {
-    background: linear-gradient(90deg, #a1c4fd, #c2e9fb, #ff9a9e, #fad0c4);
-    background-size: 300% 300%;
-    animation: gradientShift 3s ease infinite;
 }
 
 .footer-bottom {
@@ -627,27 +587,142 @@ footer {
     color: #666;
 }
 
-.footer-uptime:hover {
-    color: #333;
-    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    background-size: 300% 300%;
-    animation: gradientShift 3s ease infinite;
+.footer-badges {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0; /* Reduced padding */
+    flex-wrap: wrap;
 }
 
-@keyframes gradientShift {
+/* ===== BADGE STYLES FROM badge.html ===== */
+.badge {
+    position: relative;
+    text-decoration: none;
+    padding: 6px 12px; /* Reduced padding */
+    color: white;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    user-select: none;
+    font-size: 12px; /* Smaller font */
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.badge span {
+    width: 20px; /* Smaller size */
+    height: 20px; /* Smaller size */
+    position: absolute;
+    top: -10px; /* Adjusted position */
+    right: -2px;
+    transform: rotate(-20deg);
+    filter: blur(0.5px);
+}
+
+.badge span:before,
+.badge span:after {
+    content: "";
+    position: absolute;
+}
+
+.badge span:before {
+    width: 1px;
+    height: 100%;
+    left: 10px; /* Adjusted position */
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.7),
+        transparent
+    );
+}
+
+.badge span:after {
+    width: 100%;
+    height: 1px;
+    top: 10px; /* Adjusted position */
+    background: linear-gradient(
+        to left,
+        transparent,
+        rgba(255, 255, 255, 0.7),
+        transparent
+    );
+}
+
+.badge:hover span:after {
+    display: block;
+    animation: rotate 3s ease-in-out;
+}
+
+.badge:hover span::before {
+    display: block;
+    animation: rotate 3s ease-in-out;
+}
+
+@keyframes rotate {
     0% {
-        background-position: 0% 50%;
+        transform: rotate(0deg) scale(1);
     }
     50% {
-        background-position: 100% 50%;
+        transform: rotate(180deg) scale(1.8);
     }
     100% {
-        background-position: 0% 50%;
+        transform: rotate(360deg) scale(1);
     }
 }
 
-/* Remove all badge styles since we removed the badges */
+.badge:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(105, 106, 111, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    border-radius: 999px;
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 768px) {
+    .footer-badges {
+        gap: 10px;
+    }
+    
+    .badge {
+        padding: 4px 10px;
+        font-size: 11px;
+    }
+    
+    .badge span {
+        width: 16px;
+        height: 16px;
+        top: -8px;
+    }
+    
+    .badge span:before {
+        left: 8px;
+    }
+    
+    .badge span:after {
+        top: 8px;
+    }
+}
+</style>
+<style>
+<?php echo $diy['cssCon'] ?>
+</style>

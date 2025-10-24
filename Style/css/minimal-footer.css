@@ -1,0 +1,227 @@
+/* Minimal Expert Footer Design - Clean & Elegant */
+
+.minimal-footer-container {
+  margin-top: 60px;
+  padding: 0 20px;
+  position: relative;
+  clear: both;
+  z-index: 10;
+  background: transparent;
+  padding-top: 20px;
+}
+
+.minimal-footer-content {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+  position: relative;
+}
+
+.minimal-footer-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff9a9e, #a1c4fd);
+  border-radius: 16px 16px 0 0;
+}
+
+.minimal-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.minimal-footer-section h4 {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.minimal-footer-section h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  background: #ff6b6b;
+  border-radius: 1px;
+}
+
+.minimal-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.minimal-footer-links li {
+  margin: 8px 0;
+}
+
+.minimal-footer-links a {
+  color: #7f8c8d;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.minimal-footer-links a:hover {
+  color: #ff6b6b;
+  transform: translateX(3px);
+}
+
+.minimal-footer-links i {
+  margin-right: 8px;
+  font-size: 0.9rem;
+  width: 16px;
+  text-align: center;
+  color: #ff6b6b;
+}
+
+/* Stats Section */
+.minimal-footer-stats {
+  display: flex;
+  gap: 25px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.minimal-stat-item {
+  text-align: center;
+  padding: 10px 15px;
+}
+
+.minimal-stat-number {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ff6b6b;
+  font-family: "Noto Serif SC", serif;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.minimal-stat-label {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.minimal-footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  color: #7f8c8d;
+  font-size: 0.85rem;
+  font-family: "Noto Serif SC", serif;
+  font-weight: 400;
+  margin-top: 15px;
+}
+
+.minimal-footer-bottom a {
+  color: #ff6b6b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.minimal-footer-bottom a:hover {
+  color: #e74c3c;
+  text-decoration: underline;
+}
+
+.minimal-heartbeat {
+  animation: minimal-heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes minimal-heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  5% {
+    transform: scale(1.15);
+  }
+  10% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.15);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .minimal-footer-content {
+    padding: 20px 20px;
+  }
+
+  .minimal-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .minimal-footer-stats {
+    gap: 15px;
+  }
+
+  .minimal-stat-item {
+    padding: 8px 12px;
+  }
+
+  .minimal-stat-number {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .minimal-footer-container {
+    padding: 0 15px;
+    margin-top: 40px;
+  }
+
+  .minimal-footer-content {
+    padding: 15px;
+  }
+
+  .minimal-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .minimal-footer-stats {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+  }
+
+  .minimal-stat-item {
+    padding: 8px;
+  }
+}
