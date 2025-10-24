@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileMenu = document.getElementById("mobileMenu");
   const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
   const mobileMenuClose = document.getElementById("mobileMenuClose");
-  const themeToggle = document.getElementById("themeToggle");
 
   // If mobile toggle doesn't exist, we're not on a page with navigation
   if (!mobileToggle) return;
@@ -65,80 +64,4 @@ document.addEventListener("DOMContentLoaded", function () {
       closeMobileMenu();
     }
   });
-
-  // Theme toggle functionality
-  if (themeToggle) {
-    // Initialize theme on page load
-    function initializeTheme() {
-      const savedTheme = localStorage.getItem("theme-preference");
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      const theme = savedTheme || (prefersDark ? "dark-mode" : "light-mode");
-
-      document.body.classList.remove("light-mode", "dark-mode");
-      document.body.classList.add(theme);
-      updateThemeIcon(theme);
-    }
-
-    // Update theme icon based on current theme
-    function updateThemeIcon(theme) {
-      const themeIcon = document.getElementById("themeIcon");
-      if (themeIcon) {
-        if (theme === "dark-mode") {
-          themeIcon.src = "Style/img/nav/light.png";
-          themeIcon.alt = "Switch to Light Mode";
-        } else {
-          themeIcon.src = "Style/img/nav/light.png";
-          themeIcon.alt = "Switch to Dark Mode";
-        }
-      }
-    }
-
-    // Toggle theme on button click
-    themeToggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      // Add visual feedback
-      this.style.transform = "scale(0.9)";
-      setTimeout(() => {
-        this.style.transform = "";
-      }, 150);
-
-      // Get current theme
-      const currentTheme = document.body.classList.contains("dark-mode")
-        ? "dark-mode"
-        : "light-mode";
-      const newTheme =
-        currentTheme === "dark-mode" ? "light-mode" : "dark-mode";
-
-      // Apply new theme
-      document.body.classList.remove("light-mode", "dark-mode");
-      document.body.classList.add(newTheme);
-
-      // Save preference
-      localStorage.setItem("theme-preference", newTheme);
-
-      // Update icon
-      updateThemeIcon(newTheme);
-
-      console.log("Theme switched to:", newTheme);
-    });
-
-    // Initialize theme on page load
-    initializeTheme();
-
-    // Listen for system theme changes
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (e) => {
-        if (!localStorage.getItem("theme-preference")) {
-          const newTheme = e.matches ? "dark-mode" : "light-mode";
-          document.body.classList.remove("light-mode", "dark-mode");
-          document.body.classList.add(newTheme);
-          updateThemeIcon(newTheme);
-        }
-      });
-  }
 });

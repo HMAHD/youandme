@@ -210,6 +210,7 @@ $Animation = $text['Animation'];
 <script src="../Style/js/funlazy.min.js"></script>
 <script src="../Style/js/loading.js?LikeGirl=<?php echo $version ?>"></script>
 <script src="../Style/js/components.js?<?php echo time(); ?>"></script>
+<script src="../Style/js/uptime.js?<?php echo time(); ?>"></script>
 
 <?php
 echo htmlspecialchars_decode($diy['headCon'], ENT_QUOTES);
@@ -496,18 +497,58 @@ body {
 /* ===== FOOTER FIXES ===== */
 .footer-container {
     overflow: visible !important;
-    padding: 20px !important;
-    margin-top: 40px !important;
+    padding: 10px !important; /* Reduced padding */
+    margin-top: 20px !important; /* Reduced margin */
 }
 
 .footer-content {
     overflow: visible !important;
-    padding: 30px !important;
+    padding: 15px !important; /* Reduced padding */
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+.footer-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.98) 100%);
+}
+
+.footer-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.footer-brand:hover {
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+    transform: scale(1.05);
+}
+
+.footer-brand span {
+    font-weight: 700;
+    font-family: "Noto Serif SC", serif;
+    background: linear-gradient(90deg, #ff9a9e, #a1c4fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.footer-brand:hover span {
+    background: linear-gradient(90deg, #a1c4fd, #c2e9fb, #ff9a9e, #fad0c4);
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite;
 }
 
 .footer-bottom {
     margin: 0 !important;
-    padding: 25px 30px 25px !important;
+    padding: 15px 20px 15px !important; /* Reduced padding */
     border-radius: 0 0 20px 20px !important;
 }
 
@@ -536,7 +577,77 @@ footer {
     line-height: 3rem !important;
     letter-spacing: 0.2rem !important;
 }
-</style>
-<style>
-<?php echo $diy['cssCon'] ?>
-</style>
+
+/* ===== ADMIN PANEL LINK STYLES ===== */
+.admin-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+.admin-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.admin-icon {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Responsive adjustments for admin link */
+@media (max-width: 768px) {
+    .admin-link {
+        width: 36px;
+        height: 36px;
+        margin-left: 10px;
+    }
+    
+    .admin-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* ===== FOOTER UPTIME AND BADGES ===== */
+.footer-uptime {
+    text-align: center;
+    padding: 10px 0; /* Reduced padding */
+    font-size: 14px;
+    color: #666;
+}
+
+.footer-uptime:hover {
+    color: #333;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Remove all badge styles since we removed the badges */

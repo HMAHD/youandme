@@ -6,27 +6,14 @@
       <span><?php echo $text['logo'] ?></span>
     </a>
 
-    <ul class="footer-links">
-      <li><a href="index.php" class="footer-link">Home</a></li>
-      <li><a href="leaving.php" class="footer-link">Messages</a></li>
-      <li><a href="about.php" class="footer-link">About</a></li>
-      <li><a href="loveImg.php" class="footer-link">Gallery</a></li>
-      <li><a href="list.php" class="footer-link">Our List</a></li>
-    </ul>
-
-    <div class="footer-social">
-      <a href="#" class="social-link">
-        <i class="icon-heart"></i>
-      </a>
-      <a href="#" class="social-link">
-        <i class="icon-instagram"></i>
-      </a>
-      <a href="#" class="social-link">
-        <i class="icon-facebook"></i>
-      </a>
-      <a href="#" class="social-link">
-        <i class="icon-twitter"></i>
-      </a>
+    <!-- Website uptime display - tracks actual website uptime -->
+    <div class="footer-uptime">
+      <span id="uptime-display">Website Uptime: 
+        <span id="uptime-days">0</span>d 
+        <span id="uptime-hours">0</span>h 
+        <span id="uptime-minutes">0</span>m 
+        <span id="uptime-seconds">0</span>s
+      </span>
     </div>
   </div>
 

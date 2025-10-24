@@ -49,10 +49,10 @@
       </div>
     </button>
     
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <img src="Style/img/nav/light.png" alt="Theme" class="theme-icon" id="themeIcon">
-    </button>
+    <!-- Admin Panel Link -->
+    <a href="admin/" class="admin-link" aria-label="Admin Panel">
+      <img src="Style/img/nav/admin.png" alt="Admin" class="admin-icon">
+    </a>
   </div>
 </nav>
 
@@ -99,6 +99,13 @@
       <a href="list.php" class="mobile-menu-link <?php echo (basename($_SERVER['PHP_SELF']) == 'list.php') ? 'active' : ''; ?>">
         <img src="Style/img/nav/list.png" alt="Our List" class="nav-icon">
         <span>Our List</span>
+      </a>
+    </li>
+    <!-- Admin Panel Link in Mobile Menu -->
+    <li class="mobile-menu-item">
+      <a href="admin/" class="mobile-menu-link">
+        <img src="Style/img/nav/admin.png" alt="Admin" class="nav-icon">
+        <span>Admin Panel</span>
       </a>
     </li>
   </ul>
